@@ -1,0 +1,117 @@
+object Form1: TForm1
+  Left = 681
+  Height = 786
+  Top = 180
+  Width = 1098
+  Caption = 'Boleeman''s Fractal Tree on a TPaintbox'
+  ClientHeight = 786
+  ClientWidth = 1098
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.2.4.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 69
+    Top = 0
+    Width = 1098
+    Align = alTop
+    ClientHeight = 69
+    ClientWidth = 1098
+    TabOrder = 0
+    object SpinEditAngle: TSpinEdit
+      Left = 17
+      Height = 28
+      Top = 24
+      Width = 96
+      MaxValue = 90
+      OnChange = SpinEditAngleChange
+      TabOrder = 0
+      Value = 20
+    end
+    object SpinEditRecursion: TSpinEdit
+      Left = 129
+      Height = 28
+      Top = 24
+      Width = 97
+      MaxValue = 14
+      MinValue = 1
+      OnChange = SpinEditRecursionChange
+      TabOrder = 1
+      Value = 10
+    end
+    object SpinEditLineThickness: TSpinEdit
+      Left = 249
+      Height = 28
+      Top = 24
+      Width = 96
+      MaxValue = 20
+      MinValue = 1
+      OnChange = SpinEditLineThicknessChange
+      TabOrder = 2
+      Value = 2
+    end
+    object TrackBarScale: TTrackBar
+      Left = 416
+      Height = 21
+      Top = 27
+      Width = 193
+      Min = 1
+      OnChange = TrackBarScaleChange
+      Position = 1
+      TabOrder = 3
+    end
+  end
+  object ScrollBox1: TScrollBox
+    Left = 0
+    Height = 717
+    Top = 69
+    Width = 1098
+    HorzScrollBar.Page = 902
+    VertScrollBar.Page = 603
+    Align = alClient
+    ClientHeight = 713
+    ClientWidth = 1094
+    TabOrder = 1
+    OnResize = ScrollBox1Resize
+    object PaintBox1: TPaintBox
+      Left = 30
+      Height = 585
+      Top = 18
+      Width = 872
+      OnPaint = PaintBox1Paint
+    end
+  end
+  object lbl_BranchAngle: TLabel
+    Left = 15
+    Height = 20
+    Top = 4
+    Width = 91
+    Caption = 'Branch Angle:'
+    ParentColor = False
+  end
+  object lbl_RecursionLevel: TLabel
+    Left = 128
+    Height = 20
+    Top = 4
+    Width = 67
+    Caption = 'Recursion:'
+    ParentColor = False
+  end
+  object lbl_LineThickness: TLabel
+    Left = 249
+    Height = 20
+    Top = 6
+    Width = 96
+    Caption = 'Line Thickness:'
+    ParentColor = False
+  end
+  object lbl_trackbarvalue: TLabel
+    Left = 420
+    Height = 20
+    Top = 6
+    Width = 135
+    Caption = 'Trackbar Scale Value'
+    ParentColor = False
+  end
+end
