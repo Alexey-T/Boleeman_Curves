@@ -1,5 +1,4 @@
-All these projects (and their screenshots) were originally
-published on Lazarus forum: https://forum.lazarus.freepascal.org/index.php/board,39.0.html
+All these projects (and their screenshots) were originally published on [Lazarus forum, 'Graphics' part](https://forum.lazarus.freepascal.org/index.php/board,39.0.html).
 
 ## Gallery
 
@@ -35,8 +34,8 @@ published on Lazarus forum: https://forum.lazarus.freepascal.org/index.php/board
 
 ## Authors
 
-* Boleeman: https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476
-* with the help of: Dzandaa, KodeZwerg, Josh, WP, Jamie, TRon, Circular, Lainz and everyone else.
+* [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)
+* with the help of: Dzandaa, KodeZwerg, Josh, WP, Jamie, TRon, Circular, Lainz and everyone else
 
 ## License
 
