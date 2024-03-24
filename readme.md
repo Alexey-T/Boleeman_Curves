@@ -5,33 +5,33 @@ published on ![Lazarus forum](https://forum.lazarus.freepascal.org/index.php/boa
 
 ![Blade Maker](images/Blade%20Maker.png)
 
-![Circle Fractal](images/Circle Fractal.png)
+![Circle Fractal](images/Circle%20Fractal.png)
 
-![Curling Pythagoras Tree](images/Curling Pythagoras Tree.png)
+![Curling Pythagoras Tree](images/Curling%20Pythagoras%20Tree.png)
 
-![Fern Leaf](images/Fern Leaf.png)
+![Fern Leaf](images/Fern%20Leaf.png)
 
-![FractalTree on a Paintbox](images/FractalTree on a Paintbox.png)
+![FractalTree on a Paintbox](images/FractalTree%20on%20a%20Paintbox.png)
 
-![Koch Snowflake](images/Koch Snowflake.png)
+![Koch Snowflake](images/Koch%20Snowflake.png)
 
 ![Lissajous](images/Lissajous.png)
 
-![Maze Maker](images/Maze Maker.png)
+![Maze Maker](images/Maze%20Maker.png)
 
-![N-Sided Flakes](images/N-Sided Flakes.png)
+![N-Sided Flakes](images/N-Sided%20Flakes.png)
 
-![Petal Maker](images/Petal Maker.png)
+![Petal Maker](images/Petal%20Maker.png)
 
-![Rainbow Trees](images/Rainbow Trees.png)
+![Rainbow Trees](images/Rainbow%20Trees.png)
 
-![Rose Curve](images/Rose Curve.png)
+![Rose Curve](images/Rose%20Curve.png)
 
-![Square Fractal](images/Square Fractal.png)
+![Square Fractal](images/Square%20Fractal.png)
 
-![Sutcliffe Fractal](images/Sutcliffe Fractal.png)
+![Sutcliffe Fractal](images/Sutcliffe%20Fractal.png)
 
-![Targeted Line Colouring and Filling](images/Targeted Line Colouring and Filling.png)
+![Targeted Line Colouring and Filling](images/Targeted%20Line%20Colouring%20and%20Filling.png)
 
 ## Authors
 
