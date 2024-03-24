@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Release"/>
+    <Units>
+      <Unit>
+        <Filename Value="MazeMaker.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormMazeMaker"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="261"/>
+        <CursorPos X="5" Y="268"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="SpectraLibrary.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="26"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ScreenPrintMaze.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPrintMaze"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="122"/>
+        <CursorPos X="5" Y="138"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="MazeLibrary.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="110"/>
+        <CursorPos X="83" Y="113"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <EditorIndex Value="3"/>
+        <CursorPos X="14" Y="286"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="297" Column="31" TopLine="271"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="258" Column="35" TopLine="249"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="260" Column="23" TopLine="243"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="267" Column="23" TopLine="250"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="213" Column="41" TopLine="204"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="211" Column="37" TopLine="196"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="213" Column="46" TopLine="207"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="212" Column="34" TopLine="206"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="278" TopLine="263"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="213" Column="3" TopLine="207"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="215" Column="3" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="234" Column="73" TopLine="225"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="55" Column="41" TopLine="40"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="186" Column="46" TopLine="186"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="188" Column="46" TopLine="188"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="212" Column="15" TopLine="187"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="288" Column="86" TopLine="277"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="215" TopLine="215"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="214" TopLine="214"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="213" TopLine="213"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="55" TopLine="43"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="257" Column="3" TopLine="254"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="258" Column="3" TopLine="255"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="257" Column="3" TopLine="254"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="264" Column="3" TopLine="261"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="210" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="269" Column="5" TopLine="262"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenMazeMaker.pas"/>
+        <Caret Line="268" Column="5" TopLine="261"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenPrintMaze.pas"/>
+        <Caret Line="146" Column="65" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="ScreenPrintMaze.pas"/>
+        <Caret Line="140" Column="68" TopLine="130"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
