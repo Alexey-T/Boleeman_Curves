@@ -39,4 +39,4 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ## License
 
-"Has a free licence".
+"Has a free license".
