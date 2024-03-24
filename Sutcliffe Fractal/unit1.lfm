@@ -1,0 +1,185 @@
+object Form1: TForm1
+  Left = 461
+  Height = 940
+  Top = 287
+  Width = 1075
+  Caption = 'Sutcliffe Pentagons'
+  ClientHeight = 940
+  ClientWidth = 1075
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    AnchorSideTop.Control = Panel1
+    AnchorSideTop.Side = asrBottom
+    Left = 1
+    Height = 908
+    Top = 80
+    Width = 1075
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight]
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 1
+    Height = 77
+    Top = 3
+    Width = 1070
+    ClientHeight = 77
+    ClientWidth = 1070
+    TabOrder = 0
+    object SpinEditNest: TSpinEdit
+      Left = 86
+      Height = 28
+      Top = 35
+      Width = 60
+      MaxValue = 20
+      MinValue = 1
+      OnChange = SpinEditNestChange
+      TabOrder = 0
+      Value = 5
+    end
+    object SpinEditRadius: TSpinEdit
+      Left = 195
+      Height = 28
+      Top = 35
+      Width = 60
+      Increment = 10
+      MaxValue = 400
+      MinValue = 10
+      OnChange = SpinEditRadiusChange
+      TabOrder = 1
+      Value = 350
+    end
+    object SpinEditStrutFactor: TFloatSpinEdit
+      Left = 304
+      Height = 28
+      Top = 35
+      Width = 70
+      DecimalPlaces = 3
+      Increment = 0.005
+      MaxValue = 1
+      OnChange = SpinEditStrutFactorChange
+      TabOrder = 2
+      Value = 0.3
+    end
+    object SpinEditStrutTarget: TSpinEdit
+      Left = 413
+      Height = 28
+      Top = 35
+      Width = 60
+      MaxValue = 20
+      MinValue = 1
+      OnChange = SpinEditStrutTargetChange
+      TabOrder = 3
+      Value = 4
+    end
+    object SpinEditSubStrutTarget: TSpinEdit
+      Left = 522
+      Height = 28
+      Top = 35
+      Width = 60
+      MaxValue = 20
+      MinValue = 1
+      OnChange = SpinEditSubStrutTargetChange
+      TabOrder = 4
+      Value = 3
+    end
+    object SpinEditNumSides: TSpinEdit
+      Left = 631
+      Height = 28
+      Top = 35
+      Width = 60
+      MaxValue = 20
+      MinValue = 3
+      OnChange = SpinEditNumSidesChange
+      TabOrder = 5
+      Value = 7
+    end
+    object lblNest: TLabel
+      Left = 86
+      Height = 20
+      Top = 8
+      Width = 33
+      Caption = 'Nest:'
+      ParentColor = False
+    end
+    object lblRadius: TLabel
+      Left = 195
+      Height = 20
+      Top = 8
+      Width = 47
+      Caption = 'Radius:'
+      ParentColor = False
+    end
+    object lblStrutFactor: TLabel
+      Left = 304
+      Height = 20
+      Top = 8
+      Width = 74
+      Caption = 'StrutFactor:'
+      ParentColor = False
+    end
+    object lblStrutTarget: TLabel
+      Left = 413
+      Height = 20
+      Top = 11
+      Width = 75
+      Caption = 'StrutTarget:'
+      ParentColor = False
+    end
+    object lblSubStrutTarget: TLabel
+      Left = 522
+      Height = 20
+      Top = 9
+      Width = 100
+      Caption = 'SubStrutTarget:'
+      ParentColor = False
+    end
+    object lblNumSides: TLabel
+      Left = 632
+      Height = 20
+      Top = 11
+      Width = 70
+      Caption = 'NumSides:'
+      ParentColor = False
+    end
+    object ColorButtonpencolor: TColorButton
+      Left = 747
+      Height = 27
+      Top = 35
+      Width = 58
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 3766783
+      OnColorChanged = ColorButtonpencolorColorChanged
+    end
+    object ColorButtonbrushcolor: TColorButton
+      Left = 852
+      Height = 27
+      Top = 35
+      Width = 58
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clWhite
+      OnColorChanged = ColorButtonbrushcolorColorChanged
+    end
+    object lblpencolor: TLabel
+      Left = 747
+      Height = 20
+      Top = 11
+      Width = 60
+      Caption = 'Pencolor:'
+      ParentColor = False
+    end
+    object lblbrushcolor: TLabel
+      Left = 852
+      Height = 20
+      Top = 11
+      Width = 73
+      Caption = 'Brushcolor:'
+      ParentColor = False
+    end
+  end
+end

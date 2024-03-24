@@ -1,0 +1,115 @@
+object Form1: TForm1
+  Left = 180
+  Height = 788
+  Top = 174
+  Width = 1099
+  Caption = 'Pythagoras Tree Filled to Certain Level and Luminance Threshold Setting'
+  ClientHeight = 788
+  ClientWidth = 1099
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 58
+    Top = 0
+    Width = 1099
+    Align = alTop
+    ClientHeight = 58
+    ClientWidth = 1099
+    TabOrder = 0
+    object seFilltoLevel: TSpinEdit
+      Left = 80
+      Height = 28
+      Top = 24
+      Width = 70
+      MaxValue = 10
+      MinValue = -1
+      OnChange = seFilltoLevelChange
+      TabOrder = 0
+      Value = 7
+    end
+    object seRecursionLevel: TSpinEdit
+      Left = 292
+      Height = 28
+      Top = 24
+      Width = 70
+      MaxValue = 15
+      MinValue = -1
+      OnChange = seRecursionLevelChange
+      TabOrder = 1
+      Value = 11
+    end
+    object seChangeTreeSize: TSpinEdit
+      Left = 504
+      Height = 28
+      Top = 24
+      Width = 70
+      MaxValue = 500
+      OnChange = seChangeTreeSizeChange
+      TabOrder = 2
+      Value = 200
+    end
+    object seLumLimit: TFloatSpinEdit
+      Left = 716
+      Height = 28
+      Top = 24
+      Width = 70
+      DecimalPlaces = 3
+      Increment = 0.005
+      OnChange = seLumLimitChange
+      TabOrder = 3
+      Value = 0.325
+    end
+    object lblFillTo: TLabel
+      Left = 78
+      Height = 20
+      Top = 2
+      Width = 59
+      Caption = 'FillUp to:'
+      ParentColor = False
+    end
+    object lblTotRec: TLabel
+      Left = 290
+      Height = 20
+      Top = 3
+      Width = 133
+      Caption = 'Total recursive level:'
+      ParentColor = False
+    end
+    object lblTreesize: TLabel
+      Left = 504
+      Height = 20
+      Top = 5
+      Width = 60
+      Caption = 'Tree size:'
+      ParentColor = False
+    end
+    object lblLumThresh: TLabel
+      Left = 716
+      Height = 20
+      Top = 4
+      Width = 143
+      Caption = 'Luminance Threshold:'
+      ParentColor = False
+    end
+    object btnRefresh: TButton
+      Left = 920
+      Height = 42
+      Top = 10
+      Width = 131
+      Caption = 'Refresh'
+      OnClick = btnRefreshClick
+      TabOrder = 4
+    end
+  end
+  object PaintBox1: TPaintBox
+    Left = 0
+    Height = 730
+    Top = 58
+    Width = 1099
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+end

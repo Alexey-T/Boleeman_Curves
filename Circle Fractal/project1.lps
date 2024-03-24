@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="61" Y="17"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitcirclefractal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unitcirclefractal"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="79"/>
+        <CursorPos X="31" Y="95"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="16">
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="33" Column="28" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="85" Column="5" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="82" Column="2" TopLine="61"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="79" Column="56" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="80" Column="64" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="81" Column="64" TopLine="61"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="82" Column="110" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="95" Column="3" TopLine="74"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="82" Column="81" TopLine="67"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="79" Column="75" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="80" Column="75" TopLine="70"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="87" Column="75" TopLine="77"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="57" Column="3" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="79" Column="90" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="87" Column="80" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="unitcirclefractal.pas"/>
+        <Caret Line="125" Column="12" TopLine="104"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
