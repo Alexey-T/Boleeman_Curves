@@ -3,7 +3,7 @@ published on ![Lazarus forum](https://forum.lazarus.freepascal.org/index.php/boa
 
 ## Gallery
 
-![Blade Maker](images/Blade Maker.png)
+![Blade Maker](images/Blade%20Maker.png)
 
 ![Circle Fractal](images/Circle Fractal.png)
 
