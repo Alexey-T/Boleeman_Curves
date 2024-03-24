@@ -1,0 +1,134 @@
+object Form1: TForm1
+  Left = 209
+  Height = 743
+  Top = 198
+  Width = 1162
+  Caption = 'Boleeman Fern'
+  ClientHeight = 743
+  ClientWidth = 1162
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object Panel1: TPanel
+    Left = -64
+    Height = 77
+    Top = 3
+    Width = 1380
+    Anchors = [akTop, akLeft, akRight]
+    ClientHeight = 77
+    ClientWidth = 1380
+    TabOrder = 6
+    object lblRGB: TLabel
+      Left = 135
+      Height = 20
+      Top = 7
+      Width = 223
+      Caption = 'Red:               Green:               Blue:'
+      ParentColor = False
+    end
+    object lblSize: TLabel
+      Left = 442
+      Height = 20
+      Top = 10
+      Width = 30
+      Caption = 'Size:'
+      ParentColor = False
+    end
+    object lbl_loopsize: TLabel
+      Left = 529
+      Height = 20
+      Top = 11
+      Width = 68
+      Caption = 'Loop Size:'
+      ParentColor = False
+    end
+    object btnSave: TButton
+      Left = 1064
+      Height = 35
+      Top = 29
+      Width = 100
+      Caption = 'Save'
+      OnClick = btnSaveClick
+      TabOrder = 0
+    end
+  end
+  object btnMakeFern: TButton
+    Left = 864
+    Height = 35
+    Top = 32
+    Width = 100
+    Caption = 'Refresh Fern'
+    OnClick = btnMakeFernClick
+    TabOrder = 0
+  end
+  object seRed: TSpinEdit
+    Left = 72
+    Height = 28
+    Top = 40
+    Width = 58
+    MaxValue = 255
+    OnChange = seRedChange
+    TabOrder = 1
+    Value = 50
+  end
+  object seGreen: TSpinEdit
+    Left = 160
+    Height = 28
+    Top = 41
+    Width = 57
+    MaxValue = 255
+    OnChange = seGreenChange
+    TabOrder = 2
+    Value = 230
+  end
+  object seBlue: TSpinEdit
+    Left = 264
+    Height = 28
+    Top = 40
+    Width = 54
+    MaxValue = 255
+    OnChange = seBlueChange
+    TabOrder = 3
+    Value = 30
+  end
+  object seSizeFactor: TSpinEdit
+    Left = 376
+    Height = 28
+    Top = 40
+    Width = 54
+    MaxValue = 200
+    OnChange = seSizeFactorChange
+    TabOrder = 4
+    Value = 110
+  end
+  object seRenderNumbTimes: TSpinEdit
+    Left = 464
+    Height = 28
+    Top = 40
+    Width = 61
+    MaxValue = 200
+    MinValue = 1
+    OnChange = seRenderNumbTimesChange
+    TabOrder = 5
+    Value = 80
+  end
+  object Image1: TImage
+    AnchorSideRight.Control = Panel1
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 663
+    Top = 80
+    Width = 1316
+    AntialiasingMode = amOn
+    Align = alCustom
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.PNG'
+    Filter = 'PNG Files|*.png'''
+    Left = 591
+    Top = 116
+  end
+end
