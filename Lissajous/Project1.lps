@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="Project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Unit1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="297"/>
+        <CursorPos X="16" Y="306"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Unit2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="20"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\Dav7Components\backup\backup\dav7components.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="17" Y="13"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="Delphi"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="6">
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="17" Column="15" TopLine="181"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="367" TopLine="508"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="526" Column="2" TopLine="508"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="309" Column="2" TopLine="298"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="314" Column="58" TopLine="295"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="312" Column="64" TopLine="298"/>
+      </Position>
+      <Position>
+        <Filename Value="Unit1.pas"/>
+        <Caret Line="311" Column="60" TopLine="297"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <SkipCheckLCLInterfaces Value="True"/>
+</CONFIG>

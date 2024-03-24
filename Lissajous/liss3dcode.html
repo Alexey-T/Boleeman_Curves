@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+   <title>Untitled</title>
+ </head>
+<body>
+ <font color="#000000" face="courier" size="3">
+<pre>
+<B>unit</B> Unit2;
+<font color="#0000ff"><I>{
+  3D Lissajous graphics
+  jan. 2015, version 1.0
+  data, procedures for 3D Lissajous painting
+
+  painting in map [x,y] dimensions 800 * 800
+  coordinates (0,0,0) at [385,385]
+  pen dimensions 31*31 pixels
+  pen position (0,0) at left top
+  z axis at 45 degrees, scale 0.7:1  positive towards front
+  Xpix = X - 0.5Z
+  Ypix = Y + 0.5Z
+}</I></font>  
+
+<B>interface</B>
+
+<B>uses</B> windows,extctrls,graphics,types;
+
+<B>procedure</B> setconstants(a,b,c,d : single);
+<B>procedure</B> setsmooth(sm : boolean);
+<B>procedure</B> setstepcount(sc : word);
+<B>procedure</B> makepen(pNr:byte; col:dword);
+<B>procedure</B> drawPen(pb:Tpaintbox);
+<B>procedure</B> makedrawing(formula : byte);
+<B>function</B> FSign(v : single) : single;
+<B>function</B> Isign(a : smallInt) : smallInt;
+<B>procedure</B> clearmap;
+<B>function</B> swapRB(c : dword) : dword;
+
+<B>var</B> map : TBitmap;       <font color="#0000ff"><I>//global map for image</I></font>
+    p0,pstep : dword;    <font color="#0000ff"><I>//p0:scanline[0] pstep:line step pointer difference</I></font>
+
+<B>implementation</B>
+
+<B>type</B> Tpixels = <B>array</B>[0..30,0..30] <B>of</B> dword; <font color="#0000ff"><I>//pen image</I></font>
+     TZ = <B>array</B>[0..30,0..30] <B>of</B> smallInt;   <font color="#0000ff"><I>//pixel Z height</I></font>
+     PDW = ^dword;
+
+<B>const</B> center = 385;
+
+<B>var</B> Zbuffer : <B>array</B>[0..799,0..799] <B>of</B> smallInt;
+    SPixels : TPixels;
+    SZ : TZ;
+    pencolor : dword;
+    penNr :byte;
+    smooth : boolean;
+    stepcount : word;
+    ca,cb,cc,cd : single;   <font color="#0000ff"><I>//formula constants</I></font>
+
+<B>procedure</B> setconstants(a,b,c,d : single);
+<B>begin</B>
+ ca := a;
+ cb := b;
+ cc := c;
+ cd := d;
+<B>end</B>;
+
+<B>procedure</B> setsmooth(sm : boolean);
+<B>begin</B>
+ smooth := sm;
+<B>end</B>;
+
+<B>procedure</B> setstepcount(sc : word);
+<B>begin</B>
+ stepcount := sc;
+<B>end</B>;
+
+<B>procedure</B> drawPen(pb : Tpaintbox);
+<font color="#0000ff"><I>//copy pen in paintbox pb 31*31</I></font>
+<B>var</B> i,j : byte;
+<B>begin</B>
+ <B>for</B> j := 0 <B>to</B> 30 <B>do</B>
+  <B>for</B> i := 0 <B>to</B> 30 <B>do</B> pb.Canvas.Pixels[i,j] := swapRB(Spixels[i,j]);
+<B>end</B>;
+
+<B>function</B> swapRB(c : dword) : dword;
+<font color="#0000ff"><I>//swap red & blue fields</I></font>
+<B>begin</B>
+ result := (c <B>and</B> $0000ff00) <B>or</B> (c <B>shr</B> 16) <B>or</B> ((c <B>and</B> $ff) <B>shl</B> 16);
+<B>end</B>;
+
+<B>function</B> FSign(v : single) : single;
+<font color="#0000ff"><I>//return 1 for +, -1 for -</I></font>
+<B>begin</B>
+ result := 0;
+ <B>if</B> v > 0 <B>then</B> result := 1;
+ <B>if</B> v < 0 <B>then</B> result := -1;
+<B>end</B>;
+
+<B>function</B> Isign(a : smallInt) : smallInt;
+<B>begin</B>
+ <B>if</B> a < 0 <B>then</B> result := -1
+  <B>else</B> <B>if</B> a > 0 <B>then</B> result:= 1
+   <B>else</B> result := 0;
+<B>end</B>;
+
+<B>function</B> Strunc(f : single) : smallInt;
+<font color="#0000ff"><I>//round f to nearest integer</I></font>
+<B>begin</B>
+ <B>if</B> f >= 0 <B>then</B> result := trunc(f+0.5)
+  <B>else</B> result := trunc(f-0.5);
+<B>end</B>;
+
+<B>procedure</B> clearPen;
+<B>var</B> i,j : byte;
+<B>begin</B>
+  <B>for</B> j := 0 <B>to</B> 30 <B>do</B>         <font color="#0000ff"><I>//clear all</I></font>
+   <B>for</B> i := 0 <B>to</B> 30 <B>do</B>
+    <B>begin</B>
+     SZ[i,j] := -1000;
+     SPixels[i,j] := $ffffff;
+    <B>end</B>;
+<B>end</B>;
+
+<B>procedure</B> makeSPHcolors;
+<font color="#0000ff"><I>//make sphere pen</I></font>
+<B>var</B> i,j : byte;
+    r,g,b : byte;
+    vr,vg,vb : byte;
+    d : single;
+<B>begin</B>
+  clearPen;
+  vb := pencolor <B>shr</B> 16;
+  vg := pencolor <B>shr</B> 8 <B>and</B> $ff;
+  vr := pencolor <B>and</B> $ff;
+  <B>for</B> j := 0 <B>to</B> 30 <B>do</B>
+   <B>for</B> i := 0 <B>to</B> 30 <B>do</B>
+    <B>begin</B>
+     d := 229 - sqr(j-15) - sqr(i-15);
+     <B>if</B> d >= 0 <B>then</B>
+      <B>begin</B>
+       SZ[i,j] := trunc(0.5*sqrt(d)+0.5);
+       <B>if</B> (abs(i) < 4) <B>and</B> (abs(j) < 4) <B>then</B> d := 1
+        <B>else</B> d := 1 - sqrt(sqr(i-10) + sqr(j-10)+0.5)*0.04;
+       r := trunc(vr*d);
+       g := trunc(vg*d);
+       b := trunc(vb*d);
+       Spixels[i,j] := r + (g <B>shl</B> 8) + (b <B>shl</B> 16);
+      <B>end</B>;
+    <B>end</B>;
+<B>end</B>;
+
+<B>procedure</B> makeSQRcolors;
+<font color="#0000ff"><I>//make cube pen</I></font>
+<B>var</B> i,j : byte;
+    d : dword;
+<B>begin</B>
+  d := pencolor;
+  clearPen;
+  <B>for</B> j := 10 <B>to</B> 30 <B>do</B>       <font color="#0000ff"><I>//front edge</I></font>
+   <B>for</B> i := 0 <B>to</B> 20 <B>do</B>
+    <B>begin</B>
+     SZ[i,j] := 10;
+     SPixels[i,j] := d;
+    <B>end</B>;
+  d := d <B>and</B> $b0b0b0;
+  <B>for</B> j := 0 <B>to</B> 9 <B>do</B>       <font color="#0000ff"><I>//top edge</I></font>
+   <B>for</B> i := 10-j <B>to</B> 30-j <B>do</B>
+    <B>begin</B>
+     SZ[i,j] := trunc(0.88*j + 1);
+     SPixels[i,j] := d;
+    <B>end</B>;
+  d := d <B>and</B> $707070;
+  <B>for</B> i := 21 <B>to</B> 30 <B>do</B>       <font color="#0000ff"><I>//right edge</I></font>
+   <B>for</B> j := 31-i  <B>to</B> 50-i <B>do</B>
+    <B>begin</B>
+     SZ[i,j] := trunc(0.88*(31.5-i));
+     SPixels[i,j] := d;
+    <B>end</B>;
+<B>end</B>;
+
+<B>procedure</B> makeRectColors;
+<font color="#0000ff"><I>//flat square pen</I></font>
+<B>var</B> i,j : byte;
+    d,d1,d2,d3 : dword;
+<B>begin</B>
+ clearPen;
+ d := pencolor;
+ d1 := d <B>and</B> $c0c0c0;
+ d2 := d <B>and</B> $808080;
+ d3 := d <B>and</B> $606060;
+ <B>for</B> i := 0 <B>to</B> 1 <B>do</B>
+  <B>for</B> j := i <B>to</B> 30-i <B>do</B>     <font color="#0000ff"><I>//left</I></font>
+  <B>begin</B>
+   SPixels[i,j] := d;
+   SZ[i,j] := 0;
+  <B>end</B>;
+ <B>for</B> i := 29 <B>to</B> 30 <B>do</B>      <font color="#0000ff"><I>//right</I></font>
+  <B>for</B> j := 31-i <B>to</B> i <B>do</B>
+   <B>begin</B>
+    Spixels[i,j] := d3;
+    SZ[i,j] := 0;
+   <B>end</B>;
+ <B>for</B> j := 0 <B>to</B> 1 <B>do</B>        <font color="#0000ff"><I>//top</I></font>
+  <B>for</B> i := j <B>to</B> 30-j <B>do</B>
+   <B>begin</B>
+    Spixels[i,j] := d1;
+    SZ[i,j] := 0;
+   <B>end</B>;
+ <B>for</B> j := 29 <B>to</B> 30 <B>do</B>       <font color="#0000ff"><I>//bottom</I></font>
+  <B>for</B> i := 31-j <B>to</B> j-1 <B>do</B>
+   <B>begin</B>
+    SPixels[i,j] := d2;
+    SZ[i,j] := 0;
+   <B>end</B>;
+<B>end</B>;
+
+<B>procedure</B> makeCircle;
+<font color="#0000ff"><I>//make circle pen</I></font>
+<B>var</B> i,j : byte;
+    r,g,b : byte;
+    vr,vg,vb : byte;
+    w : word;
+    d : single;
+<B>begin</B>
+ clearPen;
+ vb := pencolor <B>shr</B> 16;
+ vg := pencolor <B>shr</B> 8 <B>and</B> $ff;
+ vr := pencolor <B>and</B> $ff;
+ <B>for</B> j := 0 <B>to</B> 30 <B>do</B>
+  <B>for</B> i := 0to 30 <B>do</B>
+   <B>begin</B>
+    w := sqr(j-15) + sqr(i-15);
+    <B>if</B> (w < 240) <B>and</B> (w > 170) <B>then</B>
+     <B>begin</B>
+      SZ[i,j] := trunc(sqrt(240-sqr(15-i)-sqr(15-j)));
+      d := 1 - sqrt(sqr(i-10) + sqr(j-10)+0.5)*0.04;
+      r := trunc(vr*d);
+      g := trunc(vg*d);
+      b := trunc(vb*d);
+      Spixels[i,j] := r + (g <B>shl</B> 8) + (b <B>shl</B> 16);
+      SZ[i,j] := 0;
+     <B>end</B>;
+   <B>end</B>;<font color="#0000ff"><I>//for</I></font>
+<B>end</B>;
+
+<B>procedure</B> makePen(pNr : byte; col:dword);
+<B>begin</B>
+ <B>if</B> (pencolor <> col) <B>or</B> (penNr <> pNr) <B>then</B>
+  <B>begin</B>
+   pencolor := col;
+   penNr := pNr;
+   <B>case</B> pNr <B>of</B>
+    1 : makeSPHcolors;
+    2 : makeSQRcolors;
+    3 : makeRectColors;
+    4 : makeCircle;
+   <B>end</B>;
+  <B>end</B>;
+<B>end</B>;
+
+<B>procedure</B> clearmap;
+<B>var</B> i,j : word;
+<B>begin</B>
+ <B>with</B> map <B>do</B> <B>with</B> canvas <B>do</B>
+  <B>begin</B>
+   brush.Color := $ffffff;
+   brush.Style := bsSolid;
+   fillrect(rect(0,0,width,height));
+  <B>end</B>;
+ <B>for</B> j := 0 <B>to</B> 799 <B>do</B>
+  <B>for</B> i := 0 <B>to</B> 799 <B>do</B> Zbuffer[i,j] := -400;
+<B>end</B>;
+
+<B>procedure</B> paintImage(x,y,z : smallInt);
+<font color="#0000ff"><I>//x,y are left-top coordinates of pen</I></font>
+<font color="#0000ff"><I>//paint pen at x,y,z</I></font>
+<B>var</B> p,p1 : dword;
+    px,py : word;
+    Zsph : smallInt;
+    i,j : byte;
+<B>begin</B>
+ <B>with</B> map <B>do</B>
+  <B>begin</B>
+   <B>for</B> j := 0 <B>to</B> 30 <B>do</B>
+    <B>begin</B>
+     py := y + j;
+     p1 := p0 - py*pStep;
+     <B>for</B> i := 0 <B>to</B> 30 <B>do</B>
+      <B>begin</B>
+       px := x + i;
+       Zsph := z + SZ[i,j];
+       <B>if</B> (Zsph > ZBuffer[px,py]) <B>then</B>
+        <B>begin</B>
+         p := p1 + (px <B>shl</B> 2);
+         ZBuffer[px,py] := Zsph;
+         PDW(p)^ := SPixels[i,j];
+        <B>end</B>;
+      <B>end</B>;<font color="#0000ff"><I>//for i</I></font>
+    <B>end</B>;<font color="#0000ff"><I>//for j</I></font>
+  <B>end</B>;<font color="#0000ff"><I>//with</I></font>
+<B>end</B>;
+
+<B>procedure</B> makeDrawing(formula:byte);
+<font color="#0000ff"><I>//fm:formula#</I></font>
+<B>var</B> i,n,t : word;
+    x,y,z : single;                           <font color="#0000ff"><I>//calculated</I></font>
+    px1,py1,pz1,px2,py2,pz2 : smallInt;       <font color="#0000ff"><I>//integer positions</I></font>
+    dx,dy,dz : single;                        <font color="#0000ff"><I>//differences</I></font>
+    sx,sy,sz : smallInt;                      <font color="#0000ff"><I>//screen coordinates</I></font>
+    code : byte;
+<B>begin</B>
+ clearmap;
+ n := 0;
+ px1 := 0; py1 := 0; pz1 := 0;
+ <B>for</B> t := 0 <B>to</B> stepcount <B>do</B>
+  <B>begin</B>
+   <B>case</B> formula <B>of</B>
+    1 : <B>begin</B>
+         z := 125*sin(cc*t);
+         x := trunc(250*cos(ca*t));
+         y := trunc(250*sin(cb*t));
+        <B>end</B>;
+    2 : <B>begin</B>
+         z := 125*sin(cd*t);
+         x := 250*sin(ca*t)*cos(cb*t);
+         y := 250*sin(ca*t)*sin(cc*t);
+        <B>end</B>;
+    3 : <B>begin</B>
+         z := 125*sin(cd*t);
+         x := 125*(cos(ca*t) + cos(cb*t));
+         y := 125*(sin(ca*t) + sin(cc*t));
+        <B>end</B>;
+    <B>else</B> <B>begin</B> x:=0; y:=0; z:=0; <B>end</B>;
+   <B>end</B>;<font color="#0000ff"><I>//case</I></font>
+   <B>if</B> (t = 0) <B>or</B> (smooth=false) <B>then</B>
+    <B>begin</B>
+     pz1 := Strunc(z);
+     px1 := Strunc(x) - pz1 + center;   <font color="#0000ff"><I>//3D & screen corrections</I></font>
+     py1 := Strunc(y) + pz1 + center;
+     paintImage(px1,py1,pz1);
+    <B>end</B>
+    <B>else</B>
+     <B>begin</B>
+      pz2 := Strunc(z);
+      px2 := Strunc(x) - pz2 + center;
+      py2 := Strunc(y) + pz2 + center;
+      dx := px2 - px1;
+      dy := py2 - py1;
+      dz := pz2 - pz1;
+      <B>if</B> abs(dx) < 0.5 <B>then</B> code := 0 <B>else</B> code := 1;
+      <B>if</B> abs(dy) >= 0.5 <B>then</B> code := code <B>or</B> $2;
+      <B>case</B> code <B>of</B>
+       0 : <B>begin</B>
+            <B>if</B> dz  <= 0 <B>then</B> n := 0 <B>else</B> n := 1;
+            dx := 0;
+            dy := 0;
+           <B>end</B>;
+       1 : <B>begin</B>
+            n := abs(trunc(dx));
+            dx := Fsign(dx);
+            dz := dz/n;
+           <B>end</B>;
+       2 : <B>begin</B>
+            n := abs(trunc(dy));
+            dy := Fsign(dy);
+            dz := dz/n;
+           <B>end</B>;
+       3 : <B>begin</B>
+            <B>if</B> abs(dx) >= abs(dy) <B>then</B>
+             <B>begin</B>
+              n := abs(trunc(dx));
+              dx := Fsign(dx);
+              dy := dy/n;
+              dz := dz/n;
+             <B>end</B>
+             <B>else</B>
+              <B>begin</B>
+               n := abs(trunc(dy));
+               dy := Fsign(dy);
+               dx := dx/n;
+               dz := dz/n;
+              <B>end</B>;
+           <B>end</B>;
+      <B>end</B>;<font color="#0000ff"><I>//case</I></font>
+      <B>if</B> code <> 0 <B>then</B>
+       <B>for</B> i := 1 <B>to</B> n <B>do</B>
+        <B>begin</B>
+         sx := Strunc(px1+i*dx);
+         sy := Strunc(py1+i*dy);
+         sz := Strunc(pz1+i*dz);
+         paintimage(sx,sy,sz);
+        <B>end</B>;
+      px1 := px2;
+      py1 := py2;
+      pz1 := pz2;
+     <B>end</B>;<font color="#0000ff"><I>//else</I></font>
+  <B>end</B>;<font color="#0000ff"><I>//for t</I></font>
+<B>end</B>;
+
+<B>initialization</B>
+
+ map := TBitmap.Create;
+ <B>with</B> map <B>do</B>
+  <B>begin</B>
+   width := 800;
+   height := 800;
+   pixelformat := pf32bit;
+   p0 := dword(scanline[0]);
+   pstep := p0 - dword(scanline[1]);
+  <B>end</B>;
+
+<B>finalization</B>
+
+ map.Free;
+
+<B>end</B>.
+</pre>
+  </font>
+ </body>
+</html>
