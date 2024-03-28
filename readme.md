@@ -32,6 +32,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Targeted Line Colouring and Filling](images/Targeted%20Line%20Colouring%20and%20Filling.png)
 
+![Stars](images/Stars.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)
