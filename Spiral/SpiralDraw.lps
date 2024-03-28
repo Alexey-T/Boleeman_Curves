@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Release"/>
+    <Units>
+      <Unit>
+        <Filename Value="SpiralDraw.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="21"/>
+      </Unit>
+      <Unit>
+        <Filename Value="spiraldrawu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SpiralForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SpiralDrawU"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="159"/>
+        <CursorPos Y="161"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="38" Column="20" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="19" Column="18" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="94" Column="24" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="84" Column="46" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="26"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="27" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="86" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="44" Column="17" TopLine="36"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="23" Column="9" TopLine="8"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="101" Column="49" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="82" Column="45" TopLine="64"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="84" Column="23" TopLine="68"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="90" Column="23" TopLine="74"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="63" Column="39" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="72" Column="90" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="71" Column="90" TopLine="59"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="72" Column="90" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="50" Column="20" TopLine="43"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="25" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="116" Column="29" TopLine="86"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="87" Column="3" TopLine="77"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="27" Column="3" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="29" Column="3" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="33" Column="20" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="71" Column="50" TopLine="51"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="10"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="71" Column="28" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="114" Column="12" TopLine="89"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="89" Column="5" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="spiraldrawu.pas"/>
+        <Caret Line="34" Column="17" TopLine="42"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

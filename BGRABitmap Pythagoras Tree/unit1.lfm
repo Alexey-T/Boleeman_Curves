@@ -1,0 +1,155 @@
+object Form1: TForm1
+  Left = 447
+  Height = 914
+  Top = 190
+  Width = 1075
+  Caption = 'Dzandaa coded Boleeman variant'
+  ClientHeight = 889
+  ClientWidth = 1075
+  DesignTimePPI = 120
+  Menu = MainMenu
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '2.2.4.0'
+  object MStatus: TStatusBar
+    Left = 0
+    Height = 29
+    Top = 860
+    Width = 1075
+    Panels = <>
+  end
+  object BGRAGraphicControl1: TBGRAGraphicControl
+    Left = 744
+    Height = 45
+    Top = 96
+    Width = 49
+    Color = clWhite
+    ColorOpacity = 128
+    Alignment = taCenter
+    Caption = 'BGRAGraphicControl1'
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 51
+    Top = 0
+    Width = 1075
+    Align = alTop
+    ClientHeight = 51
+    ClientWidth = 1075
+    TabOrder = 1
+    object CBFilled: TCheckBox
+      Left = 689
+      Height = 24
+      Top = 14
+      Width = 78
+      Caption = 'CBFilled'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+    end
+    object BPythagorasTree: TButton
+      Left = 529
+      Height = 31
+      Top = 9
+      Width = 149
+      Caption = 'BPythagorasTree'
+      OnClick = BPythagorasTreeClick
+      TabOrder = 1
+    end
+    object BExit: TButton
+      Left = 958
+      Height = 27
+      Top = 9
+      Width = 88
+      Caption = 'Exit'
+      OnClick = BExitClick
+      TabOrder = 2
+    end
+    object BSavePicture: TButton
+      Left = 327
+      Height = 27
+      Top = 8
+      Width = 88
+      Caption = 'Save'
+      OnClick = BSavePictureClick
+      TabOrder = 3
+    end
+    object BLoadPicture: TButton
+      Left = 32
+      Height = 27
+      Top = 9
+      Width = 88
+      Caption = 'Load'
+      OnClick = BLoadPictureClick
+      TabOrder = 4
+    end
+    object cbBackColour: TColorButton
+      Left = 151
+      Height = 29
+      Top = 9
+      Width = 38
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 3473408
+    end
+    object chkOpaqOrTrans: TCheckBox
+      Left = 197
+      Height = 24
+      Top = 11
+      Width = 112
+      Caption = 'Opaque Back'
+      TabOrder = 5
+    end
+  end
+  object ScrollBox1: TScrollBox
+    Left = 0
+    Height = 809
+    Top = 51
+    Width = 1075
+    HorzScrollBar.Page = 1048
+    VertScrollBar.Page = 792
+    Align = alClient
+    ClientHeight = 805
+    ClientWidth = 1071
+    Color = 3473408
+    ParentColor = False
+    TabOrder = 2
+    object Image1: TImage
+      Left = 8
+      Height = 789
+      Top = 3
+      Width = 1040
+      AntialiasingMode = amOn
+      AutoSize = True
+      Center = True
+      Proportional = True
+      Stretch = True
+    end
+  end
+  object MainMenu: TMainMenu
+    Top = 40
+    object MenuIFile: TMenuItem
+      Caption = 'File'
+      object MenuSaveFile: TMenuItem
+        Caption = 'SaveFile'
+        OnClick = MenuSaveFileClick
+      end
+      object MenuLoadFile: TMenuItem
+        Caption = 'LoadFile'
+        OnClick = MenuLoadFileClick
+      end
+    end
+  end
+  object DSavePicture: TSaveDialog
+    DefaultExt = '.png'
+    Filter = 'PNG Files|*.png|Jpg Files|*.jpg'
+    Left = 482
+    Top = 266
+  end
+  object DOpenPicture: TOpenDialog
+    DefaultExt = '.png'
+    Filter = 'PNG Files|*.png|Jpg Files|*.jpg'
+    Left = 510
+    Top = 154
+  end
+end
