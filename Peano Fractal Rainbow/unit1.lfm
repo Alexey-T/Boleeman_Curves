@@ -1,0 +1,143 @@
+object Form1: TForm1
+  Left = 397
+  Height = 980
+  Top = 236
+  Width = 1150
+  Caption = 'Rainbow Peano'
+  ClientHeight = 980
+  ClientWidth = 1150
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object Panel1: TPanel
+    Left = 974
+    Height = 980
+    Top = 0
+    Width = 176
+    Align = alRight
+    BevelColor = clBtnFace
+    ClientHeight = 980
+    ClientWidth = 176
+    Color = clActiveCaption
+    ParentColor = False
+    TabOrder = 0
+    object seLinewidth: TSpinEdit
+      Left = 30
+      Height = 28
+      Top = 175
+      Width = 85
+      MaxValue = 20
+      MinValue = 1
+      OnChange = seLinewidthChange
+      TabOrder = 0
+      Value = 2
+    end
+    object cbBackcolor: TColorButton
+      Left = 28
+      Height = 28
+      Top = 286
+      Width = 80
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = cbBackcolorColorChanged
+    end
+    object btnSavePng: TButton
+      Left = 32
+      Height = 26
+      Top = 592
+      Width = 83
+      Caption = 'Save'
+      OnClick = btnSavePngClick
+      TabOrder = 1
+    end
+    object CheckBox1: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 372
+      Width = 72
+      Caption = 'Color 1'
+      TabOrder = 2
+    end
+    object CheckBox2: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 395
+      Width = 72
+      Caption = 'Color 2'
+      TabOrder = 3
+    end
+    object CheckBox3: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 418
+      Width = 72
+      Caption = 'Color 3'
+      TabOrder = 4
+    end
+    object CheckBox4: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 441
+      Width = 72
+      Caption = 'Color 4'
+      TabOrder = 5
+    end
+    object CheckBox5: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 464
+      Width = 72
+      Caption = 'Color 5'
+      TabOrder = 6
+    end
+    object CheckBox6: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 487
+      Width = 72
+      Caption = 'Color 6'
+      TabOrder = 7
+    end
+    object CheckBox7: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 510
+      Width = 72
+      Caption = 'Color 7'
+      TabOrder = 8
+    end
+    object CheckBox8: TCheckBox
+      Left = 30
+      Height = 24
+      Top = 533
+      Width = 72
+      Caption = 'Color 8'
+      TabOrder = 9
+    end
+    object lblLinewidth: TLabel
+      Left = 28
+      Height = 20
+      Top = 144
+      Width = 71
+      Caption = 'Line width:'
+      ParentColor = False
+    end
+    object lblBackcolor: TLabel
+      Left = 28
+      Height = 20
+      Top = 260
+      Width = 72
+      Caption = 'Back color:'
+      ParentColor = False
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.png'
+    Filter = '''PNG Files|*.png;'
+    Left = 884
+    Top = 43
+  end
+end

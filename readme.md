@@ -33,7 +33,10 @@ All these projects (and their screenshots) were originally published on [Lazarus
 ![Targeted Line Colouring and Filling](images/Targeted%20Line%20Colouring%20and%20Filling.png)
 
 ![Stars](images/Stars.png)
+
 ![Spiral](images/Spiral.jpg)
+
+![Peano Fractal](images/Peano%20Fractal%20Rainbow.png)
 
 ## Authors
 
