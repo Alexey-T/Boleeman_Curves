@@ -38,6 +38,9 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Peano Fractal](images/Peano%20Fractal%20Rainbow.png)
 
+![Hilbert Fractal](images/Hilbert%20Fractal.png)
+
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)
