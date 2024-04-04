@@ -1,0 +1,117 @@
+object Form1: TForm1
+  Left = 315
+  Height = 885
+  Top = 234
+  Width = 998
+  Caption = 'Boleeman Colored Spiral'
+  ClientHeight = 885
+  ClientWidth = 998
+  DesignTimePPI = 120
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 0
+    Height = 798
+    Top = 87
+    Width = 998
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 87
+    Top = 0
+    Width = 998
+    Align = alTop
+    ClientHeight = 87
+    ClientWidth = 998
+    TabOrder = 0
+    object cbFillcolor1: TColorButton
+      Left = 136
+      Height = 25
+      Top = 40
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clRed
+      OnColorChanged = cbFillcolor1ColorChanged
+    end
+    object cbFillcolor2: TColorButton
+      Left = 224
+      Height = 25
+      Top = 41
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlue
+      OnColorChanged = cbFillcolor2ColorChanged
+    end
+    object se_Linewidth: TSpinEdit
+      Left = 411
+      Height = 28
+      Top = 40
+      Width = 57
+      MaxValue = 1
+      MinValue = 12
+      OnChange = se_LinewidthChange
+      TabOrder = 0
+      Value = 2
+    end
+    object seScalefactor: TSpinEdit
+      Left = 699
+      Height = 28
+      Top = 41
+      Width = 56
+      MaxValue = 200
+      MinValue = 50
+      OnChange = seScalefactorChange
+      TabOrder = 1
+      Value = 70
+    end
+    object seNumTriangles: TSpinEdit
+      Left = 801
+      Height = 28
+      Top = 40
+      Width = 56
+      MaxValue = 50
+      MinValue = 2
+      OnChange = seNumTrianglesChange
+      TabOrder = 2
+      Value = 39
+    end
+    object cbPencolor: TColorButton
+      Left = 514
+      Height = 25
+      Top = 41
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = cbPencolorColorChanged
+    end
+    object Label1: TLabel
+      Left = 138
+      Height = 20
+      Top = 15
+      Width = 158
+      Caption = 'Fill color 1     Fill color 2'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 410
+      Height = 20
+      Top = 16
+      Width = 171
+      Caption = 'Line width:        Line color:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 699
+      Height = 20
+      Top = 19
+      Width = 199
+      Caption = 'Scale Factor:    Num. Triangles:'
+      ParentColor = False
+    end
+  end
+end

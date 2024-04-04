@@ -40,6 +40,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Hilbert Fractal](images/Hilbert%20Fractal.png)
 
+![Spiral Of Theodorus](images/Spiral%20Of%20Theodorus.png)
+
 
 ## Authors
 
