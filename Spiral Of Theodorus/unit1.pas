@@ -5,35 +5,44 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Spin, Math;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Spin,
+  StdCtrls, Math, LCLIntf;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
-    cbFillcolor1: TColorButton;
-    cbFillcolor2: TColorButton;
-    cbPencolor: TColorButton;
+    btnSave: TButton;
+    chkAltOrFill: TCheckBox;
+    chkFill: TCheckBox;
+    cbFromFill: TColorButton;
+    cbToFill: TColorButton;
+    cbBackcolor: TColorButton;
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
+    SaveDialog1: TSaveDialog;
+    sbPencolor: TColorButton;
     PaintBox1: TPaintBox;
     Panel1: TPanel;
-    se_Linewidth: TSpinEdit;
-    seScalefactor: TSpinEdit;
-    seNumTriangles: TSpinEdit;
-    procedure cbFillcolor1ColorChanged(Sender: TObject);
-    procedure cbFillcolor2Click(Sender: TObject);
-    procedure cbFillcolor2ColorChanged(Sender: TObject);
-    procedure cbPencolorColorChanged(Sender: TObject);
+    seNumTriangs: TSpinEdit;
+    seMybasesize: TSpinEdit;
+    sePenwidth: TSpinEdit;
+    seRotate: TSpinEdit;
+    procedure btnSaveClick(Sender: TObject);
+    procedure cbBackcolorColorChanged(Sender: TObject);
+    procedure cbFromFillColorChanged(Sender: TObject);
+    procedure cbToFillColorChanged(Sender: TObject);
+    procedure chkAltOrFillChange(Sender: TObject);
+    procedure chkFillChange(Sender: TObject);
     procedure PaintBox1Paint(Sender: TObject);
-    procedure seNumTrianglesChange(Sender: TObject);
-    procedure seScalefactorChange(Sender: TObject);
-    procedure se_LinewidthChange(Sender: TObject);
+    procedure sbPencolorColorChanged(Sender: TObject);
+    procedure seMybasesizeChange(Sender: TObject);
+    procedure seNumTriangsChange(Sender: TObject);
+    procedure sePenwidthChange(Sender: TObject);
+    procedure seRotateChange(Sender: TObject);
   private
-   procedure DrawSpiralOfTheodorus(DrawCanvas: TCanvas; prevx, prevy, n, scl: Integer);
+    rotpoint: TPoint;
+    endpt: array of TPoint;
   public
 
   end;
@@ -45,82 +54,159 @@ implementation
 
 {$R *.lfm}
 
-procedure TForm1.DrawSpiralOfTheodorus(DrawCanvas: TCanvas; prevx, prevy, n, scl: Integer);
+{ TForm1 }
+
+procedure TForm1.PaintBox1Paint(Sender: TObject);
 var
-  angle, t: Double;
-  i: Integer;
-  TrianglePoints: array[0..2] of TPoint;
-  FillColor: TColor;
+  adjLength: array of Integer;
+  hypotenuse: array of Integer;
+  NumTriangles: Integer;
+  i, j, basesize: Integer;
+  Angles, RotateAngle: Double;
+  FromColor, ToColor, BackColor: TColor;
+  CurrentColor: TColor;
+  LineEndX, LineEndY: Integer;
 begin
-  angle := 0;
-  t := ArcTan(1/Sqrt(n));
-  FillColor := cbFillcolor1.ButtonColor;
+  rotpoint := Point(350, 350);
+  NumTriangles := seNumTriangs.Value;
+  basesize := seMybasesize.Value;
+  RotateAngle := DegToRad(seRotate.Value);
+  SetLength(endpt, NumTriangles + 1);
+  SetLength(adjLength, NumTriangles);
+  SetLength(hypotenuse, NumTriangles);
+  PaintBox1.Canvas.Pen.Width := sePenwidth.Value;
+  PaintBox1.Canvas.Pen.Color := sbPencolor.ButtonColor;
+  PaintBox1.Canvas.Brush.Style := bsSolid;
 
-  for i := 0 to n - 1 do
+  hypotenuse[0] := Round(Sqrt((basesize**2) + (basesize**2)));
+  for i := 1 to NumTriangles - 1 do
+    hypotenuse[i] := Round(Sqrt((hypotenuse[i - 1]**2) + (basesize**2)));
+
+
+  LineEndX := Round(rotpoint.x + basesize * Cos(RotateAngle));
+  LineEndY := Round(rotpoint.y - basesize * Sin(RotateAngle));
+  endpt[0] := Point(LineEndX, LineEndY);
+
+  LineEndX := Round(rotpoint.x + basesize * Cos(RotateAngle));
+  LineEndY := Round(rotpoint.y + basesize * Sin(RotateAngle));
+  endpt[1] := Point(LineEndX, LineEndY);
+
+  FromColor := cbFromFill.ButtonColor;
+  ToColor := cbToFill.ButtonColor;
+  BackColor := cbBackcolor.ButtonColor;
+
+  for i := 1 to NumTriangles do
   begin
-    DrawCanvas.Brush.Color := FillColor;
-    DrawCanvas.Pen.Color:= cbPencolor.ButtonColor;
+    Angles := 0;
+    for j := 1 to i do
+      Angles := Angles + ArcTan(1/Sqrt(j));
 
-    TrianglePoints[0] := Point(400, 300);
-    TrianglePoints[1] := Point(prevx + 400, prevy + 300);
-    TrianglePoints[2] := Point(Round(Cos(angle)*scl*Sqrt(i)) + 400, Round(Sin(angle)*scl*Sqrt(i)) + 300);
+    endpt[i] := Point(
+      Round(rotpoint.x + hypotenuse[i - 1] * Cos(Angles + RotateAngle)),
+      Round(rotpoint.y - hypotenuse[i - 1] * Sin(Angles + RotateAngle))
+    );
+  end;
 
+  PaintBox1.Canvas.Brush.Color := BackColor;
+  PaintBox1.Canvas.FillRect(PaintBox1.ClientRect);
 
-    DrawCanvas.Polygon(TrianglePoints);
+  for i := NumTriangles - 1 downto 0 do
+  begin
+    adjLength[i] := Round(Sqrt((endpt[i].x - rotpoint.x)**2 + (endpt[i].y - rotpoint.y)**2));
 
-    prevx := Round(Cos(angle)*scl*Sqrt(i));
-    prevy := Round(Sin(angle)*scl*Sqrt(i));
+    with PaintBox1.Canvas do
+    begin
+      MoveTo(rotpoint.x, rotpoint.y);
+      LineTo(endpt[i].x, endpt[i].y);
+      LineTo(endpt[i + 1].x, endpt[i + 1].y);
+      LineTo(rotpoint.x, rotpoint.y);
 
-    if FillColor = cbFillcolor2.ButtonColor then
-      FillColor := cbFillcolor1.ButtonColor
-    else
-      FillColor := cbFillcolor2.ButtonColor;
+      if chkFill.Checked then
+      begin
+        if chkAltOrFill.Checked and Odd(NumTriangles - i) then
+          CurrentColor := cbFromFill.ButtonColor
+        else
+          CurrentColor := RGBToColor(
+            Red(FromColor) + Round((i + 1) * (Red(ToColor) - Red(FromColor)) / NumTriangles),
+            Green(FromColor) + Round((i + 1) * (Green(ToColor) - Green(FromColor)) / NumTriangles),
+            Blue(FromColor) + Round((i + 1) * (Blue(ToColor) - Blue(FromColor)) / NumTriangles)
+          );
 
-    angle -= t;
-
-    if n < 1000 then
-      n += 1;
+        Brush.Color := CurrentColor;
+        Polygon([rotpoint, endpt[i], endpt[i + 1]]);
+      end;
+    end;
   end;
 end;
 
-procedure TForm1.cbFillcolor2Click(Sender: TObject);
+procedure TForm1.chkFillChange(Sender: TObject);
 begin
-    Paintbox1.invalidate;
+  Paintbox1.Invalidate;
 end;
 
-procedure TForm1.cbFillcolor1ColorChanged(Sender: TObject);
+procedure TForm1.cbToFillColorChanged(Sender: TObject);
 begin
-    Paintbox1.invalidate;
+  Paintbox1.Invalidate;
 end;
 
-procedure TForm1.cbFillcolor2ColorChanged(Sender: TObject);
+procedure TForm1.chkAltOrFillChange(Sender: TObject);
 begin
-   Paintbox1.invalidate;
+  Paintbox1.Invalidate;
 end;
 
-procedure TForm1.cbPencolorColorChanged(Sender: TObject);
+procedure TForm1.cbFromFillColorChanged(Sender: TObject);
 begin
-     Paintbox1.invalidate;
+  Paintbox1.Invalidate;
 end;
 
-procedure TForm1.PaintBox1Paint(Sender: TObject);
+procedure TForm1.cbBackcolorColorChanged(Sender: TObject);
 begin
-     DrawSpiralOfTheodorus(PaintBox1.Canvas, 0, 0, seNumTriangles.Value + 2, seScalefactor.Value);
+      Paintbox1.Invalidate;
 end;
 
-procedure TForm1.seNumTrianglesChange(Sender: TObject);
+procedure TForm1.btnSaveClick(Sender: TObject);
+var
+  Picture: TPicture;
 begin
-   Paintbox1.invalidate;
+
+  if SaveDialog1.Execute then
+  begin
+
+    Picture := TPicture.Create;
+    try
+      Picture.Bitmap.Width := PaintBox1.Width;
+      Picture.Bitmap.Height := PaintBox1.Height;
+      Picture.Bitmap.Canvas.CopyRect(PaintBox1.ClientRect, PaintBox1.Canvas, PaintBox1.ClientRect);
+      Picture.SaveToFile(SaveDialog1.FileName);
+    finally
+      Picture.Free;
+    end;
+  end;
 end;
 
-procedure TForm1.seScalefactorChange(Sender: TObject);
+procedure TForm1.sbPencolorColorChanged(Sender: TObject);
 begin
-  Paintbox1.invalidate;
+    Paintbox1.Invalidate;
 end;
 
-procedure TForm1.se_LinewidthChange(Sender: TObject);
+procedure TForm1.seMybasesizeChange(Sender: TObject);
 begin
-    Paintbox1.invalidate;
+    Paintbox1.Invalidate;
+end;
+
+procedure TForm1.seNumTriangsChange(Sender: TObject);
+begin
+  Paintbox1.Invalidate;
+end;
+
+procedure TForm1.sePenwidthChange(Sender: TObject);
+begin
+  Paintbox1.Invalidate;
+end;
+
+procedure TForm1.seRotateChange(Sender: TObject);
+begin
+      Paintbox1.Invalidate;
 end;
 
 end.
