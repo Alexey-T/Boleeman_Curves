@@ -42,6 +42,7 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Spiral Of Theodorus](images/Spiral%20Of%20Theodorus.png)
 
+![Sierpinski arrowhead](images/Sierpinski%20arrowhead.png)
 
 ## Authors
 
