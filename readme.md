@@ -44,6 +44,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Sierpinski arrowhead](images/Sierpinski%20arrowhead.png)
 
+![Spiraling Lines](images/Spiraling%20Lines.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

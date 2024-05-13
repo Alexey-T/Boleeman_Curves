@@ -1,0 +1,373 @@
+object Form1: TForm1
+  Left = 803
+  Height = 565
+  Top = 268
+  Width = 687
+  Caption = 'Boleeman Spiraling Curvy Lines'
+  ClientHeight = 565
+  ClientWidth = 687
+  Color = 5247512
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poWorkAreaCenter
+  LCLVersion = '3.3.0.0'
+  object cntrsPanel: TPanel
+    Left = 0
+    Height = 54
+    Top = 0
+    Width = 687
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 54
+    ClientWidth = 687
+    Color = 5247512
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object shpcntrols: TShape
+      AnchorSideLeft.Control = cntrsPanel
+      AnchorSideTop.Control = cntrsPanel
+      AnchorSideRight.Control = cntrsPanel
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = cntrsPanel
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 54
+      Top = 0
+      Width = 687
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      Brush.Style = bsClear
+      Pen.Color = clWhite
+      Pen.Width = 2
+      Shape = stRoundRect
+    end
+    object chkEnableanimation: TCheckBox
+      AnchorSideLeft.Control = chkCyclecolors
+      AnchorSideTop.Control = chkCyclecolors
+      AnchorSideTop.Side = asrBottom
+      Left = 12
+      Height = 17
+      Top = 25
+      Width = 18
+      BorderSpacing.Top = 4
+      DoubleBuffered = False
+      Font.Color = clWhite
+      ParentDoubleBuffered = False
+      ParentFont = False
+      TabOrder = 0
+      OnChange = chkEnableanimationChange
+    end
+    object chkCyclecolors: TCheckBox
+      AnchorSideLeft.Control = cntrsPanel
+      AnchorSideTop.Control = cntrsPanel
+      Left = 12
+      Height = 17
+      Top = 4
+      Width = 18
+      BorderSpacing.Left = 12
+      BorderSpacing.Top = 4
+      Checked = True
+      Font.Color = clWhite
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 1
+      OnChange = chkCyclecolorsChange
+    end
+    object seLinewidth: TSpinEdit
+      AnchorSideLeft.Control = lblLineWidth
+      AnchorSideTop.Control = chkEnableanimation
+      Left = 110
+      Height = 23
+      Top = 25
+      Width = 50
+      MaxValue = 10
+      MinValue = 1
+      OnChange = seLinewidthChange
+      TabOrder = 2
+      Value = 6
+    end
+    object tbSpeedcontrol: TTrackBar
+      AnchorSideLeft.Control = lblSpeed
+      AnchorSideTop.Control = lblSpeed
+      AnchorSideTop.Side = asrBottom
+      Left = 503
+      Height = 21
+      Top = 23
+      Width = 120
+      AutoSize = True
+      Max = 100
+      Min = 1
+      OnChange = tbSpeedcontrolChange
+      Position = 70
+      Reversed = True
+      BorderSpacing.Top = 4
+      TabOrder = 3
+    end
+    object lblLineWidth: TLabel
+      AnchorSideLeft.Control = lblCycleColorss
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkCyclecolors
+      Left = 110
+      Height = 15
+      Top = 4
+      Width = 35
+      BorderSpacing.Left = 16
+      Caption = 'Width:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblCycleSpeed: TLabel
+      AnchorSideLeft.Control = seCycleSlow
+      AnchorSideTop.Control = chkCyclecolors
+      Left = 246
+      Height = 15
+      Top = 4
+      Width = 64
+      Caption = 'Cycle Speed'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblSpeed: TLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = lblCycleSpeed
+      AnchorSideRight.Side = asrBottom
+      Left = 503
+      Height = 15
+      Top = 4
+      Width = 120
+      Alignment = taCenter
+      AutoSize = False
+      BorderSpacing.Left = 24
+      Caption = 'Speed'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object seSegments: TSpinEdit
+      AnchorSideLeft.Control = seLinewidth
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seLinewidth
+      Left = 172
+      Height = 23
+      Top = 25
+      Width = 50
+      BorderSpacing.Left = 12
+      MaxValue = 34
+      MinValue = 8
+      OnChange = seSegmentsChange
+      TabOrder = 4
+      Value = 17
+    end
+    object lbl_Segments: TLabel
+      AnchorSideLeft.Control = seSegments
+      AnchorSideTop.Control = chkCyclecolors
+      Left = 172
+      Height = 15
+      Top = 4
+      Width = 52
+      Caption = 'Segments'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object seCycleSlow: TSpinEdit
+      AnchorSideLeft.Control = seSegments
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = seLinewidth
+      Left = 246
+      Height = 23
+      Top = 25
+      Width = 50
+      BorderSpacing.Left = 24
+      MaxValue = 16
+      OnChange = seCycleSlowChange
+      TabOrder = 5
+      Value = 2
+    end
+    object lblColor: TLabel
+      AnchorSideLeft.Control = lblInOut
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkCyclecolors
+      Left = 425
+      Height = 15
+      Top = 4
+      Width = 57
+      BorderSpacing.Left = 12
+      Caption = 'Line Color:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object chkInOut: TCheckBox
+      AnchorSideLeft.Control = lblCycleSpeed
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = cntrsPanel
+      Left = 322
+      Height = 17
+      Top = 4
+      Width = 18
+      BorderSpacing.Left = 12
+      BorderSpacing.Top = 4
+      Checked = True
+      Font.Color = clWhite
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 6
+    end
+    object lblfps: TLabel
+      AnchorSideLeft.Control = tbSpeedcontrol
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkEnableanimation
+      AnchorSideRight.Side = asrBottom
+      Left = 623
+      Height = 15
+      Top = 27
+      Width = 60
+      Alignment = taCenter
+      AutoSize = False
+      BorderSpacing.Top = 2
+      Caption = 'FPS: '
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object lblCycleColorss: TLabel
+      AnchorSideLeft.Control = chkCyclecolors
+      AnchorSideTop.Control = chkCyclecolors
+      Left = 28
+      Height = 15
+      Top = 6
+      Width = 66
+      BorderSpacing.Left = 16
+      BorderSpacing.Top = 2
+      Caption = 'Cycle Colors'
+      Color = clWhite
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object lblAnimate: TLabel
+      AnchorSideLeft.Control = chkEnableanimation
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkEnableanimation
+      Left = 30
+      Height = 15
+      Top = 27
+      Width = 45
+      BorderSpacing.Top = 2
+      Caption = 'Animate'
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object lblInOut: TLabel
+      AnchorSideLeft.Control = chkInOut
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkInOut
+      Left = 340
+      Height = 15
+      Top = 6
+      Width = 73
+      BorderSpacing.Top = 2
+      Caption = 'Cycle In / Out'
+      Font.Color = clWhite
+      ParentFont = False
+    end
+    object shpSetColor: TShape
+      AnchorSideLeft.Control = lblColor
+      AnchorSideTop.Control = seSegments
+      Left = 425
+      Height = 22
+      Top = 25
+      Width = 54
+      Brush.Color = clBlue
+      Pen.Color = clWhite
+      Pen.Width = 2
+      OnMouseDown = shpSetColorMouseDown
+      Shape = stRoundRect
+    end
+    object chkStagger: TCheckBox
+      AnchorSideLeft.Control = lblCycleSpeed
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkEnableanimation
+      Left = 322
+      Height = 17
+      Top = 25
+      Width = 18
+      BorderSpacing.Left = 12
+      Checked = True
+      Font.Color = clWhite
+      ParentFont = False
+      State = cbChecked
+      TabOrder = 7
+      OnChange = chkStaggerChange
+    end
+    object lblInOut1: TLabel
+      AnchorSideLeft.Control = chkInOut
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = chkStagger
+      AnchorSideRight.Control = shpSetColor
+      Left = 340
+      Height = 15
+      Top = 27
+      Width = 83
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Top = 2
+      BorderSpacing.Right = 2
+      Caption = 'Stagger Colors'
+      Font.Color = clWhite
+      ParentFont = False
+    end
+  end
+  object AShape: TShape
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = cntrsPanel
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 511
+    Top = 54
+    Width = 687
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Brush.Color = clBackground
+    Brush.Style = bsClear
+    Pen.Style = psClear
+    OnPaint = AShapePaint
+  end
+  object Timer1: TTimer
+    Interval = 250
+    OnTimer = Timer1Timer
+    Left = 576
+    Top = 72
+  end
+  object ColorDialog1: TColorDialog
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 531
+    Top = 71
+  end
+end
