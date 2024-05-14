@@ -67,7 +67,7 @@ type
     masterbmp,bmp:tbgrabitmap;
     ti,fps:int64;
     procedure generatecolors;
-    procedure AnimatedCurvyLInes;
+    procedure AnimatedCurvyLines(Const TC:TCanvas);
   public
     { Public declarations }
   end;
@@ -117,7 +117,7 @@ begin
     setlength(a,s+1);
     k := Random(360) * Pi / 180;
     generatecolors;
-    AnimatedCurvyLInes;
+    AnimatedCurvyLines(AShape.Canvas);
   end;
 end;
 
@@ -149,7 +149,7 @@ end;
 
 procedure TForm1.AShapePaint(Sender: TObject);
 begin
-  if sender is tshape then AnimatedCurvyLInes;
+  if sender is tshape then AnimatedCurvyLines(AShape.Canvas);
 end;
 
 procedure TForm1.chkEnableAnimationChange(Sender: TObject);
@@ -209,7 +209,7 @@ begin
   if sender is TTimer then if ((chkEnableAnimation.Checked) and (PaintingFinished)) then AShape.Paint;
 end;
 
-procedure TForm1.AnimatedCurvyLInes;
+procedure TForm1.AnimatedCurvyLines(Const TC:TCanvas);
 var
   i, j: Integer;
   upd:boolean;
@@ -272,7 +272,7 @@ begin
     application.ProcessMessages;
     co:=0;
   end;
-  bmp.Draw(ashape.Canvas,0,0);
+  bmp.Draw(tc,0,0);
   PaintingFinished:=true;
   inc(fps);
   if gettickcount64-ti>1000 then
