@@ -12,11 +12,17 @@ object Form1: TForm1
   Position = poWorkAreaCenter
   LCLVersion = '3.3.0.0'
   object cntrsPanel: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
     Left = 0
     Height = 54
     Top = 0
     Width = 687
     Align = alTop
+    Alignment = taLeftJustify
     BevelOuter = bvNone
     ClientHeight = 54
     ClientWidth = 687
@@ -24,6 +30,7 @@ object Form1: TForm1
     ParentBackground = False
     ParentColor = False
     TabOrder = 0
+    UseDockManager = False
     object shpcntrols: TShape
       AnchorSideLeft.Control = cntrsPanel
       AnchorSideTop.Control = cntrsPanel
@@ -154,7 +161,7 @@ object Form1: TForm1
       Top = 25
       Width = 50
       BorderSpacing.Left = 12
-      MaxValue = 34
+      MaxValue = 50
       MinValue = 8
       OnChange = seSegmentsChange
       TabOrder = 4
@@ -295,10 +302,8 @@ object Form1: TForm1
       Top = 25
       Width = 18
       BorderSpacing.Left = 12
-      Checked = True
       Font.Color = clWhite
       ParentFont = False
-      State = cbChecked
       TabOrder = 7
       OnChange = chkStaggerChange
     end
@@ -319,7 +324,7 @@ object Form1: TForm1
       ParentFont = False
     end
   end
-  object AShape: TShape
+  object dispScrollBox: TScrollBox
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = cntrsPanel
     AnchorSideTop.Side = asrBottom
@@ -327,15 +332,23 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 0
-    Height = 511
-    Top = 54
-    Width = 687
+    Left = 4
+    Height = 503
+    Top = 58
+    Width = 679
+    HorzScrollBar.Page = 1
+    HorzScrollBar.Visible = False
+    VertScrollBar.Page = 1
+    VertScrollBar.Visible = False
     Anchors = [akTop, akLeft, akRight, akBottom]
-    Brush.Color = clBackground
-    Brush.Style = bsClear
-    Pen.Style = psClear
-    OnPaint = AShapePaint
+    BorderSpacing.Around = 4
+    BorderStyle = bsNone
+    Color = clBlack
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 1
+    OnMouseDown = dispScrollBoxMouseDown
+    OnPaint = dispScrollBoxPaint
   end
   object Timer1: TTimer
     Interval = 250

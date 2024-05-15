@@ -12,7 +12,6 @@ const res=21;
 
 type
 
-//  TPointArray = array of TPointF;
   { TForm1 }
 
   TForm1 = class(TForm)
@@ -32,8 +31,8 @@ type
     lblColor: TLabel;
     lblfps: TLabel;
     cntrsPanel: TPanel;
+    dispScrollBox: TScrollBox;
     seLinewidth: TSpinEdit;
-    AShape: TShape;
     seSegments: TSpinEdit;
     seCycleSlow: TSpinEdit;
     shpSetColor: TShape;
@@ -44,8 +43,10 @@ type
     procedure chkCyclecolorsChange(Sender: TObject);
     procedure chkInOutChange(Sender: TObject);
     procedure chkStaggerChange(Sender: TObject);
+    procedure dispScrollBoxMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure FormCreate(Sender: TObject);
-    procedure AShapePaint(Sender: TObject);
+    procedure dispScrollBoxPaint(Sender: TObject);
     procedure chkEnableAnimationChange(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure seCycleSlowChange(Sender: TObject);
@@ -61,13 +62,13 @@ type
     currentColorIndex: Integer;
     x, y, tx, ty, d, len, k: Real;
     kIncrement: Real;
-    sp:array[0..50] of integer;
+    sp:array of integer;
     a: array of Real;
     colors: array of TBGRAPixel;
     masterbmp,bmp:tbgrabitmap;
     ti,fps:int64;
     procedure generatecolors;
-    procedure AnimatedCurvyLines(Const TC:TCanvas);
+    procedure AnimatedCurvyLines;
   public
     { Public declarations }
   end;
@@ -81,16 +82,35 @@ implementation
 
 procedure TForm1.generatecolors;
 var i:integer;
+
+function fadecolor(f,t:tcolor;d:single):tcolor;
+begin
+  f:=ColorToRGB(f);
+  t:=ColorToRGB(t);
+  result:=RGBToColor(Round(red(f)+(red(t)-red(f))*d),Round(green(f)+(green(t)-green(f))*d),Round(blue(f)+(blue(t)-blue(f))*d));
+end;
+
 begin
   SetLength(colors, N+1);
-  for i := 0 to N  do
-  begin
-    colors[i] := RGBToColor(
+  SetLength(sp, N+1);
+  if chkCyclecolors.Checked then
+  begin;
+    for i := 0 to N  do
+    begin
+      colors[i] := RGBToColor(
       Trunc(255 * (1 - i / N)),   // Red component
       Trunc(255 * Abs(Sin(i))),   // Green component
       Trunc(255 * (i / N))        // Blue component
-    );
-    if chkStagger.checked then sp[i]:=i else sp[i]:=0;
+      );
+      if chkStagger.checked then sp[i]:=i else sp[i]:=0;
+    end;
+  end
+  else
+  begin
+    for i:=0 to n do
+    begin
+      colors[i]:=fadecolor(shpSetColor.Brush.Color,dispScrollBox.Color,(i+1)/(n+6));
+    end;
   end;
 end;
 
@@ -100,14 +120,17 @@ begin
   if sender is tform then
   begin
     Randomize;
-    for i:=0 to res do sp[i]:=i;//random(res);//i;
+    seSegments.Value:=res;
     c:=0;
+    co:=0;
     S := res;
     N := res;
     W := 2;
+    setlength(sp,n+1);
+    for i:=0 to high(sp) do sp[i]:=0;
     PaintingFinished:=true;
-    bmp:=tbgrabitmap.Create(ashape.Width,ashape.height,AShape.Brush.Color);
-    masterbmp:=tbgrabitmap.Create(ashape.Width,ashape.height,AShape.Brush.Color);
+    bmp:=tbgrabitmap.Create(dispScrollBox.Width,dispScrollBox.height,dispScrollBox.Brush.Color);
+    masterbmp:=tbgrabitmap.Create(dispScrollBox.Width,dispScrollBox.height,dispScrollBox.Brush.Color);
     chkEnableAnimation.Checked := False;
     chkEnableAnimation.Refresh;
     tbSpeedControl.Position := 54;
@@ -117,7 +140,7 @@ begin
     setlength(a,s+1);
     k := Random(360) * Pi / 180;
     generatecolors;
-    AnimatedCurvyLines(AShape.Canvas);
+    AnimatedCurvyLines;
   end;
 end;
 
@@ -128,13 +151,14 @@ begin
   if sender is tcheckbox then
   begin
     if not chkCyclecolors.Checked then currentColorIndex := 0;
-    AShape.Paint;
+    generatecolors;
+    dispScrollBox.Repaint;
   end;
 end;
 
 procedure TForm1.chkInOutChange(Sender: TObject);
 begin
-  if sender is tcheckbox then AShape.Paint;
+  if sender is tcheckbox then dispScrollBox.rePaint;
 end;
 
 procedure TForm1.chkStaggerChange(Sender: TObject);
@@ -142,19 +166,36 @@ begin
   if sender is tcheckbox then generatecolors;
 end;
 
-procedure TForm1.cbSinglecolorColorChanged(Sender: TObject);
+procedure TForm1.dispScrollBoxMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
 begin
-  if sender is tcolorbutton then AShape.Paint;
+  if sender is TScrollBox then
+  begin
+    if button=mbright then
+    begin
+      if colordialog1.Execute then
+      begin
+        MasterBmp.FillRect(0,0,MasterBmp.Width,MasterBmp.Height,colordialog1.Color,dmset);
+        dispScrollBox.Color:=colordialog1.Color;
+        dispScrollBox.Invalidate;
+      end;
+    end;
+  end;
 end;
 
-procedure TForm1.AShapePaint(Sender: TObject);
+procedure TForm1.cbSinglecolorColorChanged(Sender: TObject);
 begin
-  if sender is tshape then AnimatedCurvyLines(AShape.Canvas);
+  if sender is tcolorbutton then dispScrollBox.rePaint;
+end;
+
+procedure TForm1.dispScrollBoxPaint(Sender: TObject);
+begin
+  if sender is tscrollbox then AnimatedCurvyLines;
 end;
 
 procedure TForm1.chkEnableAnimationChange(Sender: TObject);
 begin
-  if sender is tcheckbox then AShape.Paint;
+  if sender is tcheckbox then dispScrollBox.rePaint;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -168,7 +209,7 @@ end;
 
 procedure TForm1.seCycleSlowChange(Sender: TObject);
 begin
-  if sender is tspinedit then AShape.paint;
+  if sender is tspinedit then dispScrollBox.repaint;
 end;
 
 procedure TForm1.seSegmentsChange(Sender: TObject);
@@ -179,19 +220,23 @@ begin
     s:=n;
     setlength(a,s+1);
     generatecolors;
-    AShape.paint;
+    dispScrollBox.repaint;
   end;
 end;
 
 procedure TForm1.seLinewidthChange(Sender: TObject);
 begin
-  if sender is TSpinEdit then  AShape.paint;
+  if sender is TSpinEdit then  dispScrollBox.repaint;
 end;
 
 procedure TForm1.shpSetColorMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  if colordialog1.Execute then shpSetColor.Brush.Color:=colordialog1.Color;
+  if colordialog1.Execute then
+  begin
+    shpSetColor.Brush.Color:=colordialog1.Color;
+    generatecolors;
+  end;
 end;
 
 procedure TForm1.tbSpeedControlChange(Sender: TObject);
@@ -206,82 +251,83 @@ end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
 begin
-  if sender is TTimer then if ((chkEnableAnimation.Checked) and (PaintingFinished)) then AShape.Paint;
+  if sender is TTimer then if ((chkEnableAnimation.Checked) and (PaintingFinished)) then dispScrollBox.rePaint;
 end;
 
-procedure TForm1.AnimatedCurvyLines(Const TC:TCanvas);
+procedure TForm1.AnimatedCurvyLines;
 var
-  i, j: Integer;
-  upd:boolean;
+  i, j, r: Integer;
+  f: Single;
+  upd: Boolean;
 begin
-  // check to stop recurring
-  if not PaintingFinished then exit;
-  PaintingFinished:=false;
-  if chkEnableAnimation.Checked then k := k + kIncrement * Pi / 180;
-  if (bmp.Width<>AShape.Width) or (bmp.Height<>AShape.Height) then
+  // Check to stop recurring
+  if not PaintingFinished then Exit;
+  PaintingFinished := False;
+  // Adjust parameters for animation
+  if chkEnableAnimation.Checked then k:=k+kIncrement*Pi/180;
+  // Recreate bitmap if size changed
+  if (bmp.Width<>dispScrollBox.Width) or (bmp.Height<>dispScrollBox.Height) then
   begin
-    bmp.Free;
-    masterbmp.Free;
-    bmp:=tbgrabitmap.Create(ashape.Width,ashape.height,AShape.Brush.Color);
-    bmp:=tbgrabitmap.Create(ashape.Width,ashape.height,AShape.Brush.Color);
-  end;
-  masterbmp.Draw(bmp.Canvas,0,0);
-  // adjust len to better fit screen
-  len := Min(AShape.Width, AShape.Height)/n/(2.0-(1.0*((n-7)/27)));
-  bmp.Canvas.Pen.Width := seLinewidth.Value;
-  bmp.Canvas.Brush.Color := clBlack;
-  bmp.Canvas.AntialiasingMode:=amOn;
-  a[1] := a[1] + Sin(k) / 15;
-  for i := 2 to N do a[i] := a[i] + (a[i - 1] - a[i]) * 0.1;
-  d := 2 * Pi / S;
-  c:=0;
-  for j := 0 to S - 1 do
+    bmp.SetSize(dispScrollBox.Width, dispScrollBox.Height);
+    masterbmp.SetSize(dispScrollBox.Width, dispScrollBox.Height);
+  end
+  else bmp.Assign(masterbmp);
+  // Adjust len to better fit screen dimensions
+  r:=seSegments.MaxValue-seSegments.MinValue;
+  f:=1/r;
+  len:=Min(dispScrollBox.Width,dispScrollBox.Height)/n/(1.8-(1.0*(f+(n-seSegments.MinValue+1)/r)));
+  bmp.Canvas.Pen.Width:=seLinewidth.Value;
+  a[1]:=a[1]+Sin(k)/15;
+  for i:=2 to N do a[i]:=a[i]+(a[i-1]-a[i])*0.1;
+  d:=2*Pi/S;
+ // co:=0;
+  for j:=0 to S-1 do
   begin
     c:=sp[j];
-    x := 0.5 * AShape.Width;
-    y := 0.5 * AShape.Height;
-    for i := 2 to N do
+    x:=0.5*dispScrollBox.Width;
+    y:=0.5*dispScrollBox.Height;
+    for i:=2 to N do
     begin
-      if chkInOut.checked then inc(c) else dec(c);
-      if c>high(colors) then c:=low(colors);
-      if c<low(colors) then c:=high(colors);
+      //draw a line
+      if chkInOut.Checked then Inc(c) else Dec(c);
+      c:=(c+Length(Colors)) mod Length(Colors);
       if chkCyclecolors.Checked then bmp.Canvas.Pen.Color:= colors[C]
       else bmp.Canvas.Pen.Color:= shpSetColor.Brush.Color;
-      sincos(j * d + a[i],ty,tx);    // twice as fast
-      tx := x + tx * len;
-      ty := y + ty * len;
-      bmp.Canvas.Line(Round(x), Round(y), Round(tx), Round(ty));
-      x := tx;
-      y := ty;
+      bmp.Canvas.Pen.Color:=Colors[c];
+      tx:=x+cos(j*d+a[i])*len;
+      ty:=y+sin(j*d+a[i])*len;
+      bmp.Canvas.Line(Round(x),Round(y),Round(tx),Round(ty));
+      x:=tx;
+      y:=ty;
     end;
+    // Update colors
     upd:=seCycleSlow.Value=0;
     if not upd then upd:=co mod seCycleSlow.Value=0;
     if upd then
     begin
-      if chkInOut.checked then sp[j]:=sp[j]+1
-      else sp[j]:=c-1;
-      if sp[j]<low(colors) then sp[j]:=high(colors);
-      if sp[j]>high(colors) then sp[j]:=low(colors);
+      if chkInOut.Checked then sp[j]:=sp[j]+1 else sp[j]:=c-1;
+      if sp[j]<Low(Colors) then sp[j]:=High(Colors);
+      if sp[j]>High(Colors) then sp[j]:=Low(Colors);
     end;
   end;
-
-  inc(co);
-  if co>100 then
+  Inc(co);
+  if co>20 then
   begin
-    // keep alive;
-    application.ProcessMessages;
+    // Keep Alive
+    Application.ProcessMessages;
     co:=0;
   end;
-  bmp.Draw(tc,0,0);
-  PaintingFinished:=true;
-  inc(fps);
-  if gettickcount64-ti>1000 then
+  bmp.Draw(dispScrollBox.Canvas,0,0);
+  PaintingFinished:=True;
+  Inc(fps);
+  if GetTickCount64-ti>1000 then
   begin
-    lblfps.caption:='FPS: '+inttostr(fps);
+    lblfps.Caption:='FPS: '+IntToStr(fps);
     lblfps.Invalidate;
     fps:=0;
-    ti:=gettickcount64;
+    ti:=GetTickCount64;
   end;
 end;
+
 
 end.
