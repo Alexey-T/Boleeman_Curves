@@ -46,6 +46,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Spiraling Lines](images/Spiraling%20Lines.png)
 
+![Stars from Lines](images/Stars%20from%20Lines.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

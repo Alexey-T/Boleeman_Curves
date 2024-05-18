@@ -1,0 +1,283 @@
+object Form1: TForm1
+  Left = 404
+  Height = 800
+  Top = 141
+  Width = 918
+  Caption = 'Boleeman Stars from Lines'
+  ClientHeight = 800
+  ClientWidth = 918
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 120
+    Height = 800
+    Top = 0
+    Width = 800
+    Align = alCustom
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 800
+    Top = 0
+    Width = 120
+    Align = alLeft
+    ClientHeight = 800
+    ClientWidth = 120
+    TabOrder = 0
+    object seLineWidth: TSpinEdit
+      Left = 18
+      Height = 28
+      Top = 35
+      Width = 60
+      MaxValue = 20
+      MinValue = 1
+      OnChange = seLineWidthChange
+      TabOrder = 0
+      Value = 3
+    end
+    object cbLineColor: TColorButton
+      Left = 18
+      Height = 28
+      Top = 92
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clYellow
+      OnColorChanged = cbLineColorColorChanged
+    end
+    object se_n1: TSpinEdit
+      Left = 18
+      Height = 28
+      Top = 275
+      Width = 60
+      MaxValue = 30
+      MinValue = 1
+      OnChange = se_n1Change
+      TabOrder = 1
+      Value = 14
+    end
+    object se_N: TSpinEdit
+      Left = 18
+      Height = 28
+      Top = 349
+      Width = 60
+      MaxValue = 50
+      MinValue = 1
+      OnChange = se_NChange
+      TabOrder = 2
+      Value = 23
+    end
+    object Label1: TLabel
+      Left = 17
+      Height = 20
+      Top = 7
+      Width = 71
+      Caption = 'Line width:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 22
+      Height = 20
+      Top = 71
+      Width = 76
+      Caption = 'Line colour:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 19
+      Height = 20
+      Top = 245
+      Width = 83
+      Caption = 'Angle coeff.:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 16
+      Height = 20
+      Top = 319
+      Width = 90
+      Caption = 'Angle divisor:'
+      ParentColor = False
+    end
+    object cbFillColor1: TColorButton
+      Left = 19
+      Height = 28
+      Top = 200
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clRed
+      OnColorChanged = cbFillColor1ColorChanged
+    end
+    object chkFilled: TCheckBox
+      Left = 19
+      Height = 24
+      Top = 138
+      Width = 60
+      Caption = 'Filled'
+      Checked = True
+      OnChange = chkFilledChange
+      State = cbChecked
+      TabOrder = 3
+    end
+    object Label5: TLabel
+      Left = 19
+      Height = 20
+      Top = 172
+      Width = 60
+      Caption = 'Fill color:'
+      ParentColor = False
+    end
+    object chkVertexLines: TCheckBox
+      Left = 19
+      Height = 24
+      Top = 396
+      Width = 99
+      Caption = 'VertexLines'
+      Checked = True
+      OnChange = chkVertexLinesChange
+      State = cbChecked
+      TabOrder = 4
+    end
+    object seVLineWidth: TSpinEdit
+      Left = 19
+      Height = 28
+      Top = 452
+      Width = 60
+      MaxValue = 15
+      MinValue = 1
+      OnChange = seVLineWidthChange
+      TabOrder = 5
+      Value = 3
+    end
+    object cbColorofVLines: TColorButton
+      Left = 16
+      Height = 28
+      Top = 518
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clMaroon
+      OnColorChanged = cbColorofVLinesColorChanged
+    end
+    object Label6: TLabel
+      Left = 15
+      Height = 20
+      Top = 425
+      Width = 83
+      Caption = 'VLine Width:'
+      ParentColor = False
+    end
+    object Label7: TLabel
+      Left = 19
+      Height = 20
+      Top = 494
+      Width = 79
+      Caption = 'VLine Color:'
+      ParentColor = False
+    end
+    object cbBackcolor: TColorButton
+      Left = 14
+      Height = 28
+      Top = 716
+      Width = 60
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 16777088
+      OnColorChanged = cbBackcolorColorChanged
+    end
+    object Label8: TLabel
+      Left = 16
+      Height = 20
+      Top = 689
+      Width = 74
+      Caption = 'Back Color:'
+      ParentColor = False
+    end
+    object btnSave: TButton
+      Left = 10
+      Height = 32
+      Top = 752
+      Width = 96
+      Caption = 'Save Png'
+      OnClick = btnSaveClick
+      TabOrder = 6
+    end
+    object chkCircAtVert: TCheckBox
+      Left = 13
+      Height = 24
+      Top = 560
+      Width = 101
+      Caption = 'Vertex Circs'
+      Checked = True
+      OnChange = chkCircAtVertChange
+      State = cbChecked
+      TabOrder = 7
+    end
+    object cbCircBordercolor: TColorButton
+      Left = 8
+      Height = 31
+      Top = 611
+      Width = 45
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = cbCircBordercolorColorChanged
+    end
+    object cbCircFillcolor: TColorButton
+      Left = 65
+      Height = 30
+      Top = 612
+      Width = 45
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlue
+      OnColorChanged = cbCircFillcolorColorChanged
+    end
+    object seCircSize: TSpinEdit
+      Left = 64
+      Height = 28
+      Top = 645
+      Width = 46
+      MaxValue = 60
+      OnChange = seCircSizeChange
+      TabOrder = 8
+      Value = 10
+    end
+    object seCircBorderwidth: TSpinEdit
+      Left = 11
+      Height = 28
+      Top = 645
+      Width = 46
+      MaxValue = 10
+      OnChange = seCircBorderwidthChange
+      TabOrder = 9
+      Value = 2
+    end
+    object Label9: TLabel
+      Left = 10
+      Height = 20
+      Top = 586
+      Width = 48
+      Caption = 'Border:'
+      ParentColor = False
+    end
+    object Label10: TLabel
+      Left = 69
+      Height = 20
+      Top = 586
+      Width = 22
+      Caption = 'Fill:'
+      ParentColor = False
+    end
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.png'
+    Filter = '''PNG Files|*.png;'
+    Left = 725
+    Top = 29
+  end
+end
