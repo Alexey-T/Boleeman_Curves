@@ -1,0 +1,469 @@
+object Form1: TForm1
+  Left = 667
+  Height = 529
+  Top = 141
+  Width = 616
+  Caption = 'Boleeman Epitrochoid Curve'
+  ClientHeight = 529
+  ClientWidth = 616
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '3.2.0.0'
+  object PaintBox1: TPaintBox
+    Left = 140
+    Height = 529
+    Top = 0
+    Width = 476
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 529
+    Top = 0
+    Width = 140
+    Align = alLeft
+    BevelOuter = bvNone
+    ClientHeight = 529
+    ClientWidth = 140
+    Color = 6684672
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    object animBorder: TShape
+      AnchorSideTop.Control = seLinewidth
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Label10
+      Left = 80
+      Height = 208
+      Top = 174
+      Width = 56
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Top = 8
+      BorderSpacing.Right = 4
+      Brush.Color = clBackground
+      Pen.Color = clWhite
+      Pen.Width = 2
+      Shape = stRoundRect
+    end
+    object pnlBorder: TShape
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel1
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 527
+      Top = 0
+      Width = 140
+      Anchors = [akTop, akLeft, akRight]
+      Brush.Style = bsClear
+      Pen.Color = clWhite
+      Pen.Width = 2
+      Shape = stRoundRect
+    end
+    object seA: TSpinEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label3
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 197
+      Width = 54
+      BorderSpacing.Top = 4
+      MaxValue = 50
+      MinValue = 1
+      OnChange = seAChange
+      TabOrder = 0
+      Value = 19
+    end
+    object seB: TSpinEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label4
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 251
+      Width = 54
+      BorderSpacing.Top = 4
+      MaxValue = 50
+      MinValue = 1
+      OnChange = seBChange
+      TabOrder = 1
+      Value = 11
+    end
+    object seH: TSpinEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label5
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 305
+      Width = 54
+      BorderSpacing.Top = 4
+      MaxValue = 50
+      MinValue = 1
+      OnChange = seHChange
+      TabOrder = 2
+      Value = 13
+    end
+    object seFloatDT: TFloatSpinEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label6
+      AnchorSideTop.Side = asrBottom
+      Left = 15
+      Height = 23
+      Top = 359
+      Width = 51
+      BorderSpacing.Top = 4
+      DecimalPlaces = 3
+      Increment = 0.002
+      MaxValue = 1
+      MinValue = 0.01
+      OnChange = seFloatDTChange
+      TabOrder = 3
+      Value = 0.05
+    end
+    object seLinewidth: TSpinEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label2
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 23
+      Top = 143
+      Width = 54
+      BorderSpacing.Top = 4
+      MaxValue = 100
+      MinValue = 1
+      OnChange = seLinewidthChange
+      TabOrder = 4
+      Value = 3
+    end
+    object cbLinecolor: TColorButton
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label1
+      AnchorSideTop.Side = asrBottom
+      Left = 13
+      Height = 22
+      Top = 39
+      Width = 54
+      BorderSpacing.Left = 12
+      BorderSpacing.Top = 4
+      BorderWidth = 2
+      ButtonColorSize = 13
+      ButtonColor = clBlue
+      OnColorChanged = cbLinecolorColorChanged
+    end
+    object Label1: TLabel
+      AnchorSideLeft.Control = pnlBorder
+      AnchorSideTop.Control = Panel1
+      AnchorSideRight.Control = animBorder
+      Left = 0
+      Height = 15
+      Top = 20
+      Width = 80
+      Alignment = taCenter
+      Anchors = [akTop, akLeft, akRight]
+      AutoSize = False
+      BorderSpacing.Top = 20
+      Caption = 'Line Color:'
+      Color = clWindow
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = cbBackcolor
+      AnchorSideTop.Side = asrBottom
+      Left = 10
+      Height = 15
+      Top = 124
+      Width = 60
+      BorderSpacing.Top = 12
+      Caption = 'Line Width:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label3: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seLinewidth
+      AnchorSideTop.Side = asrBottom
+      Left = 19
+      Height = 15
+      Top = 178
+      Width = 42
+      BorderSpacing.Top = 12
+      Caption = 'Value A:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label4: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seA
+      AnchorSideTop.Side = asrBottom
+      Left = 20
+      Height = 15
+      Top = 232
+      Width = 41
+      BorderSpacing.Top = 12
+      Caption = 'Value B:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label5: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seB
+      AnchorSideTop.Side = asrBottom
+      Left = 19
+      Height = 15
+      Top = 286
+      Width = 43
+      BorderSpacing.Top = 12
+      Caption = 'Value H:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label6: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seH
+      AnchorSideTop.Side = asrBottom
+      Left = 17
+      Height = 15
+      Top = 340
+      Width = 47
+      BorderSpacing.Top = 12
+      Caption = 'Value DT:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object cbBackcolor: TColorButton
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label7
+      AnchorSideTop.Side = asrBottom
+      Left = 15
+      Height = 20
+      Top = 92
+      Width = 50
+      BorderSpacing.Top = 4
+      BorderWidth = 2
+      ButtonColorSize = 13
+      ButtonColor = clBlack
+      OnColorChanged = cbBackcolorColorChanged
+    end
+    object Label7: TLabel
+      AnchorSideLeft.Control = Label1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = cbLinecolor
+      AnchorSideTop.Side = asrBottom
+      Left = 10
+      Height = 15
+      Top = 73
+      Width = 60
+      BorderSpacing.Top = 12
+      Caption = 'Back Color:'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object chkBoxB: TCheckBox
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seB
+      Left = 99
+      Height = 17
+      Top = 251
+      Width = 18
+      TabOrder = 5
+    end
+    object chkBoxA: TCheckBox
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seA
+      Left = 99
+      Height = 17
+      Top = 197
+      Width = 18
+      TabOrder = 6
+    end
+    object chkBoxH: TCheckBox
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seH
+      Left = 99
+      Height = 17
+      Top = 305
+      Width = 18
+      TabOrder = 7
+    end
+    object chkBoxDT: TCheckBox
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seFloatDT
+      Left = 99
+      Height = 17
+      Top = 359
+      Width = 18
+      TabOrder = 8
+    end
+    object Button1: TButton
+      AnchorSideLeft.Control = pnlBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = trkBUpdateSpeed
+      AnchorSideTop.Side = asrBottom
+      AnchorSideBottom.Control = pnlBorder
+      AnchorSideBottom.Side = asrBottom
+      Left = 20
+      Height = 69
+      Top = 446
+      Width = 100
+      Anchors = [akTop, akLeft, akBottom]
+      BorderSpacing.Top = 12
+      BorderSpacing.Bottom = 12
+      Caption = 'Animate'
+      TabOrder = 9
+      OnClick = Button1Click
+    end
+    object Label8: TLabel
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label3
+      Left = 86
+      Height = 15
+      Top = 178
+      Width = 45
+      Caption = 'Animate'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label9: TLabel
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label1
+      Left = 94
+      Height = 15
+      Top = 20
+      Width = 29
+      Caption = 'Cycle'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object chkBoxCycleColor: TCheckBox
+      AnchorSideLeft.Control = Label9
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = cbLinecolor
+      Left = 99
+      Height = 17
+      Top = 39
+      Width = 18
+      TabOrder = 10
+      OnChange = chkBoxCycleColorChange
+    end
+    object trkBUpdateSpeed: TTrackBar
+      AnchorSideLeft.Control = pnlBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label10
+      AnchorSideTop.Side = asrBottom
+      Left = 20
+      Height = 25
+      Top = 409
+      Width = 100
+      Max = 500
+      Min = 10
+      OnChange = trkBUpdateSpeedChange
+      Position = 100
+      TabOrder = 11
+    end
+    object Label10: TLabel
+      AnchorSideLeft.Control = pnlBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seFloatDT
+      AnchorSideTop.Side = asrBottom
+      Left = 54
+      Height = 15
+      Top = 394
+      Width = 32
+      BorderSpacing.Top = 12
+      Caption = 'Speed'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label11: TLabel
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label7
+      Left = 91
+      Height = 15
+      Top = 73
+      Width = 34
+      Caption = 'Merge'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object chkMerge: TCheckBox
+      AnchorSideLeft.Control = Label9
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = cbBackcolor
+      Left = 99
+      Height = 17
+      Top = 92
+      Width = 18
+      TabOrder = 12
+      OnChange = chkMergeChange
+    end
+    object Label12: TLabel
+      AnchorSideLeft.Control = animBorder
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Label2
+      Left = 83
+      Height = 15
+      Top = 124
+      Width = 50
+      Caption = 'Cent Line'
+      Font.Color = clWhite
+      ParentColor = False
+      ParentFont = False
+    end
+    object chkDrawCenterLine: TCheckBox
+      AnchorSideLeft.Control = Label9
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = seLinewidth
+      Left = 99
+      Height = 17
+      Top = 143
+      Width = 18
+      TabOrder = 13
+      OnChange = chkDrawCenterLineChange
+    end
+  end
+  object Timer1: TTimer
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 227
+    Top = 28
+  end
+end

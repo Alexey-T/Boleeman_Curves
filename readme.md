@@ -48,6 +48,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Stars from Lines](images/Stars%20from%20Lines.png)
 
+![Epitrochoid](images/Epitrochoid.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)
