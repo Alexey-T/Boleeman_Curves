@@ -1,0 +1,129 @@
+object Form1: TForm1
+  Left = 571
+  Height = 800
+  Top = 172
+  Width = 949
+  Caption = 'Butterfly Curve'
+  ClientHeight = 800
+  ClientWidth = 949
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 150
+    Height = 800
+    Top = 0
+    Width = 799
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 800
+    Top = 0
+    Width = 150
+    Align = alLeft
+    ClientHeight = 800
+    ClientWidth = 150
+    TabOrder = 0
+    object seScalefactor: TSpinEdit
+      Left = 31
+      Height = 28
+      Top = 299
+      Width = 82
+      MaxValue = 150
+      MinValue = 10
+      OnChange = seScalefactorChange
+      TabOrder = 0
+      Value = 100
+    end
+    object seLinewidth: TSpinEdit
+      Left = 31
+      Height = 28
+      Top = 174
+      Width = 82
+      MaxValue = 10
+      MinValue = 1
+      OnChange = seLinewidthChange
+      TabOrder = 1
+      Value = 3
+    end
+    object cbBackColor: TColorButton
+      Left = 31
+      Height = 31
+      Top = 68
+      Width = 82
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = cbBackColorColorChanged
+    end
+    object Label1: TLabel
+      Left = 31
+      Height = 20
+      Top = 146
+      Width = 70
+      Caption = 'Pen Width:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 31
+      Height = 20
+      Top = 271
+      Width = 82
+      Caption = 'Scale Factor:'
+      ParentColor = False
+    end
+    object btnRefresh: TButton
+      Left = 16
+      Height = 48
+      Top = 423
+      Width = 112
+      Caption = 'Refresh'
+      OnClick = btnRefreshClick
+      TabOrder = 2
+    end
+    object seInterp: TSpinEdit
+      Left = 32
+      Height = 28
+      Top = 536
+      Width = 78
+      MaxValue = 15
+      MinValue = 1
+      OnChange = seInterpChange
+      TabOrder = 3
+      Value = 9
+    end
+    object Label4: TLabel
+      Left = 28
+      Height = 20
+      Top = 508
+      Width = 89
+      Caption = 'Interpolation:'
+      ParentColor = False
+    end
+  end
+  object Label3: TLabel
+    Left = 31
+    Height = 20
+    Top = 39
+    Width = 74
+    Caption = 'Back Color:'
+    ParentColor = False
+  end
+  object btnSave: TButton
+    Left = 16
+    Height = 48
+    Top = 608
+    Width = 112
+    Caption = 'Save Png'
+    OnClick = btnSaveClick
+    TabOrder = 1
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = '.png'
+    Left = 353
+    Top = 33
+  end
+end

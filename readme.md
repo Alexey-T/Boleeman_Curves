@@ -50,6 +50,10 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Epitrochoid](images/Epitrochoid.png)
 
+![Sierpinski Curve](images/Sierpinski%20Curve.png)
+
+![Chrysanthemum Curve](images/Chrysanthemum%20Curve.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

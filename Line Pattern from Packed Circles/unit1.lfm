@@ -1,0 +1,133 @@
+object Form1: TForm1
+  Left = 712
+  Height = 600
+  Top = 224
+  Width = 726
+  Caption = 'Line Pattern From Packed Circles'
+  ClientHeight = 600
+  ClientWidth = 726
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 130
+    Height = 600
+    Top = 0
+    Width = 596
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 600
+    Top = 0
+    Width = 130
+    Align = alLeft
+    ClientHeight = 600
+    ClientWidth = 130
+    TabOrder = 0
+    object seLinewidth: TSpinEdit
+      Left = 11
+      Height = 28
+      Top = 289
+      Width = 56
+      MaxValue = 5
+      MinValue = 1
+      OnChange = seLinewidthChange
+      TabOrder = 0
+      Value = 4
+    end
+    object cbLinecolor: TColorButton
+      Left = 11
+      Height = 28
+      Top = 355
+      Width = 56
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 12386304
+      OnColorChanged = cbLinecolorColorChanged
+    end
+    object cbCircFillcolor: TColorButton
+      Left = 11
+      Height = 28
+      Top = 76
+      Width = 56
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clSkyBlue
+      OnColorChanged = cbCircFillcolorColorChanged
+    end
+    object cbCircBordercolor: TColorButton
+      Left = 11
+      Height = 28
+      Top = 207
+      Width = 56
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 10485760
+      OnClick = cbCircBordercolorClick
+      OnColorChanged = cbCircBordercolorColorChanged
+    end
+    object Label1: TLabel
+      Left = 11
+      Height = 20
+      Top = 262
+      Width = 74
+      Caption = 'Line Width:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 11
+      Height = 20
+      Top = 335
+      Width = 78
+      Caption = 'Line Colour:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 11
+      Height = 20
+      Top = 54
+      Width = 63
+      Caption = 'Circle Fill:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 11
+      Height = 20
+      Top = 184
+      Width = 89
+      Caption = 'Circle Border:'
+      ParentColor = False
+    end
+    object chkHideCircles: TCheckBox
+      Left = 11
+      Height = 24
+      Top = 19
+      Width = 103
+      Caption = 'Hide Circles'
+      OnChange = chkHideCirclesChange
+      TabOrder = 1
+    end
+    object seCircBordWidth: TSpinEdit
+      Left = 11
+      Height = 28
+      Top = 137
+      Width = 56
+      MaxValue = 10
+      MinValue = 1
+      OnChange = seCircBordWidthChange
+      TabOrder = 2
+      Value = 2
+    end
+    object Label5: TLabel
+      Left = 6
+      Height = 20
+      Top = 114
+      Width = 121
+      Caption = 'Circ Border Width:'
+      ParentColor = False
+    end
+  end
+end
