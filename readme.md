@@ -56,6 +56,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Line Patters from Packed Circles](images/Line%20Patters%20from%20Packed%20Circles.png)
 
+![Swirler](images/Swirler.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)
