@@ -61,7 +61,7 @@
           <Version Value="11"/>
           <PathDelim Value="\"/>
           <Target>
-            <Filename Value="Chrysanthemum Curve"/>
+            <Filename Value="bin\Release\$(TargetCPU)-$(TargetOS)\Chrysanthemum Curve"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
@@ -96,6 +96,9 @@
       <FormatVersion Value="2"/>
     </RunParams>
     <RequiredPackages>
+      <Item>
+        <PackageName Value="bgracontrols"/>
+      </Item>
       <Item>
         <PackageName Value="LCL"/>
       </Item>

@@ -1,32 +1,22 @@
 object Form1: TForm1
-  Left = 435
-  Height = 798
-  Top = 176
-  Width = 946
+  Left = 368
+  Height = 797
+  Top = 124
+  Width = 951
   Caption = 'Boleeman Chrysanthemum Curve'
-  ClientHeight = 798
-  ClientWidth = 946
+  ClientHeight = 797
+  ClientWidth = 951
   DesignTimePPI = 120
   OnCreate = FormCreate
   Position = poWorkAreaCenter
   LCLVersion = '2.2.4.0'
-  object PaintBox1: TPaintBox
-    Left = 150
-    Height = 798
-    Top = 0
-    Width = 796
-    Align = alClient
-    Color = clForm
-    ParentColor = False
-    OnPaint = PaintBox1Paint
-  end
   object Panel1: TPanel
     Left = 0
-    Height = 798
+    Height = 797
     Top = 0
     Width = 150
     Align = alLeft
-    ClientHeight = 798
+    ClientHeight = 797
     ClientWidth = 150
     TabOrder = 0
     object seLinewidth: TSpinEdit
@@ -99,7 +89,7 @@ object Form1: TForm1
       Height = 28
       Top = 342
       Width = 48
-      MaxValue = 40
+      MaxValue = 50
       MinValue = 1
       OnChange = seCChange
       TabOrder = 3
@@ -110,7 +100,7 @@ object Form1: TForm1
       Height = 28
       Top = 342
       Width = 47
-      MaxValue = 40
+      MaxValue = 50
       MinValue = 1
       OnChange = seRecChange
       TabOrder = 4
@@ -130,7 +120,7 @@ object Form1: TForm1
       Height = 28
       Top = 416
       Width = 53
-      MaxValue = 20
+      MaxValue = 30
       MinValue = 1
       OnChange = seKChange
       TabOrder = 6
@@ -160,10 +150,41 @@ object Form1: TForm1
       Caption = 'Recip:'
       ParentColor = False
     end
+    object cbMod2SelColor1: TColorButton
+      Left = 30
+      Height = 30
+      Top = 512
+      Width = 45
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clYellow
+      OnColorChanged = cbMod2SelColor1ColorChanged
+    end
+    object cbMod2SelColor2: TColorButton
+      Left = 82
+      Height = 30
+      Top = 512
+      Width = 45
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clGreen
+      OnColorChanged = cbMod2SelColor2ColorChanged
+    end
+  end
+  object BGRAGraphicControl1: TBGRAGraphicControl
+    Left = 150
+    Height = 797
+    Top = 0
+    Width = 801
+    Align = alClient
+    Color = clNone
+    ColorOpacity = 0
+    Alignment = taCenter
+    OnPaint = BGRAGraphicControl1Paint
   end
   object SaveDialog1: TSaveDialog
     DefaultExt = '.png'
-    Left = 336
-    Top = 69
+    Left = 992
+    Top = 72
   end
 end
