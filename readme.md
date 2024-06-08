@@ -64,6 +64,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Recursive Circles](images/Recursive%20Circles.png)
 
+![Dusty Pixels](images/Dusty%20Pixels.jpg)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

@@ -1,0 +1,226 @@
+object Form1: TForm1
+  Left = 521
+  Height = 799
+  Top = 183
+  Width = 951
+  Caption = 'Fractal Dust Maker'
+  ClientHeight = 799
+  ClientWidth = 951
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 150
+    Height = 799
+    Top = 0
+    Width = 801
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 799
+    Top = 0
+    Width = 150
+    Align = alLeft
+    ClientHeight = 799
+    ClientWidth = 150
+    TabOrder = 0
+    object ButtonGo: TButton
+      Left = 19
+      Height = 48
+      Top = 595
+      Width = 106
+      Caption = 'Render'
+      OnClick = ButtonGoClick
+      TabOrder = 0
+    end
+    object FloatseValA: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 144
+      Width = 60
+      Increment = 0.01
+      MaxValue = 5
+      MinValue = -5
+      TabOrder = 1
+      Value = 3
+    end
+    object FloatseValB: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 208
+      Width = 60
+      Increment = 0.01
+      MaxValue = -2.1
+      MinValue = -3.48
+      TabOrder = 2
+      Value = -2.73
+    end
+    object FloatseValX: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 272
+      Width = 60
+      Increment = 0.01
+      MaxValue = 10
+      MinValue = -10
+      TabOrder = 3
+      Value = 3.21
+    end
+    object FloatseValY: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 336
+      Width = 60
+      Increment = 0.01
+      MaxValue = 15
+      MinValue = 5
+      TabOrder = 4
+      Value = 6.54
+    end
+    object seValK: TSpinEdit
+      Left = 42
+      Height = 28
+      Top = 528
+      Width = 60
+      MaxValue = 100
+      MinValue = 2
+      TabOrder = 5
+      Value = 80
+    end
+    object ButtonAbort: TButton
+      Left = 19
+      Height = 31
+      Top = 673
+      Width = 103
+      Caption = 'Abort'
+      OnClick = ButtonAbortClick
+      TabOrder = 6
+    end
+    object FloatseScalePic: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 464
+      Width = 60
+      Increment = 0.01
+      MaxValue = 20
+      MinValue = 1
+      TabOrder = 7
+      Value = 1.7
+    end
+    object FloatseSpan: TFloatSpinEdit
+      Left = 42
+      Height = 28
+      Top = 400
+      Width = 60
+      Increment = 0.01
+      MaxValue = 10
+      MinValue = 1
+      TabOrder = 8
+      Value = 2.2
+    end
+    object cbPixelColor: TColorButton
+      Left = 37
+      Height = 26
+      Top = 38
+      Width = 74
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = clBlack
+      OnColorChanged = cbPixelColorColorChanged
+    end
+    object cbBackColor: TColorButton
+      Left = 37
+      Height = 26
+      Top = 85
+      Width = 74
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 8454143
+      OnColorChanged = cbBackColorColorChanged
+    end
+    object Label1: TLabel
+      Left = 40
+      Height = 20
+      Top = 17
+      Width = 74
+      Caption = 'Pixel Color:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 39
+      Height = 20
+      Top = 66
+      Width = 74
+      Caption = 'Back Color:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 40
+      Height = 20
+      Top = 124
+      Width = 33
+      Caption = 'ValA:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 40
+      Height = 20
+      Top = 187
+      Width = 36
+      Caption = 'Val B:'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 43
+      Height = 20
+      Top = 252
+      Width = 36
+      Caption = 'Val X:'
+      ParentColor = False
+    end
+    object Label6: TLabel
+      Left = 41
+      Height = 20
+      Top = 315
+      Width = 35
+      Caption = 'Val Y:'
+      ParentColor = False
+    end
+    object Label7: TLabel
+      Left = 40
+      Height = 20
+      Top = 378
+      Width = 36
+      Caption = 'Span:'
+      ParentColor = False
+    end
+    object Label8: TLabel
+      Left = 44
+      Height = 20
+      Top = 443
+      Width = 64
+      Caption = 'Scale Pic.:'
+      ParentColor = False
+    end
+    object Label9: TLabel
+      Left = 40
+      Height = 20
+      Top = 505
+      Width = 44
+      Caption = 'Cycles:'
+      ParentColor = False
+    end
+    object btnClear: TButton
+      Left = 21
+      Height = 28
+      Top = 732
+      Width = 99
+      Caption = 'Clear'
+      OnClick = btnClearClick
+      TabOrder = 9
+    end
+  end
+end
