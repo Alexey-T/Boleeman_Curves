@@ -62,6 +62,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Burning Ship](images/Burning%20Ship.png)
 
+![Recursive Circles](images/Recursive%20Circles.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

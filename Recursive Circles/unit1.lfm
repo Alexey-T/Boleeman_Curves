@@ -1,0 +1,153 @@
+object Form1: TForm1
+  Left = 383
+  Height = 767
+  Top = 181
+  Width = 874
+  Caption = 'Recursive Circle Pattern'
+  ClientHeight = 767
+  ClientWidth = 874
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 128
+    Height = 710
+    Top = 8
+    Width = 710
+    OnPaint = PaintBox1Paint
+  end
+  object seDepth: TSpinEdit
+    Left = 40
+    Height = 28
+    Top = 56
+    Width = 48
+    OnChange = seDepthChange
+    TabOrder = 0
+    Value = 3
+  end
+  object cbVertCircleTop: TColorButton
+    Left = 48
+    Height = 34
+    Top = 128
+    Width = 37
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clLime
+    OnColorChanged = cbVertCircleTopColorChanged
+  end
+  object cbHorizCircleLeft: TColorButton
+    Left = 8
+    Height = 34
+    Top = 144
+    Width = 37
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clAqua
+    OnColorChanged = cbHorizCircleLeftColorChanged
+  end
+  object seInitialSize: TSpinEdit
+    Left = 26
+    Height = 28
+    Top = 323
+    Width = 70
+    MaxValue = 400
+    MinValue = 100
+    OnChange = seInitialSizeChange
+    TabOrder = 1
+    Value = 350
+  end
+  object cbBordercolor: TColorButton
+    Left = 40
+    Height = 36
+    Top = 448
+    Width = 45
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clBlack
+    OnColorChanged = cbBordercolorColorChanged
+  end
+  object cbLargest: TColorButton
+    Left = 16
+    Height = 32
+    Top = 216
+    Width = 102
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = 8454016
+    OnColorChanged = cbLargestColorChanged
+  end
+  object seBorderLineWidth: TSpinEdit
+    Left = 39
+    Height = 28
+    Top = 387
+    Width = 49
+    MaxValue = 3
+    MinValue = 1
+    OnChange = seBorderLineWidthChange
+    TabOrder = 2
+    Value = 1
+  end
+  object cbVertCircleBottom: TColorButton
+    Left = 48
+    Height = 34
+    Top = 168
+    Width = 37
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clYellow
+    OnColorChanged = cbVertCircleBottomColorChanged
+  end
+  object cbHorizCircleRight: TColorButton
+    Left = 88
+    Height = 34
+    Top = 144
+    Width = 37
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = 16744448
+    OnColorChanged = cbHorizCircleRightColorChanged
+  end
+  object chkFiller: TCheckBox
+    Left = 32
+    Height = 24
+    Top = 259
+    Width = 56
+    Caption = 'Filler'
+    Checked = True
+    OnChange = chkFillerChange
+    State = cbChecked
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 38
+    Height = 20
+    Top = 26
+    Width = 44
+    Caption = 'Depth:'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 21
+    Height = 20
+    Top = 360
+    Width = 89
+    Caption = 'Border width:'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 40
+    Height = 20
+    Top = 429
+    Width = 48
+    Caption = 'Border:'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 27
+    Height = 20
+    Top = 297
+    Width = 69
+    Caption = 'Initial size:'
+    ParentColor = False
+  end
+end
