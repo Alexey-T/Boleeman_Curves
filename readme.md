@@ -58,6 +58,8 @@ All these projects (and their screenshots) were originally published on [Lazarus
 
 ![Swirler](images/Swirler.png)
 
+![Apollonian Gasket](images/Apollonian%20Gasket.png)
+
 ## Authors
 
 * [Boleeman](https://forum.lazarus.freepascal.org/index.php?action=profile;u=70476)

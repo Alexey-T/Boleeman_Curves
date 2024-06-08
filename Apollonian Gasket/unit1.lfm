@@ -1,0 +1,107 @@
+object Form1: TForm1
+  Left = 349
+  Height = 797
+  Top = 202
+  Width = 941
+  Caption = 'Boleeman BgraBmp  IFS Apollonian Gasket'
+  ClientHeight = 797
+  ClientWidth = 941
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 150
+    Height = 797
+    Top = 0
+    Width = 791
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 797
+    Top = 0
+    Width = 150
+    Align = alLeft
+    ClientHeight = 797
+    ClientWidth = 150
+    TabOrder = 0
+    object seScaleFactor: TSpinEdit
+      Left = 16
+      Height = 28
+      Top = 171
+      Width = 76
+      MaxValue = 130
+      MinValue = 10
+      OnChange = seScaleFactorChange
+      TabOrder = 0
+      Value = 100
+    end
+    object cbBackColor: TColorButton
+      Left = 16
+      Height = 35
+      Top = 69
+      Width = 78
+      BorderWidth = 2
+      ButtonColorSize = 16
+      ButtonColor = 10354687
+      OnColorChanged = cbBackColorColorChanged
+    end
+    object seMaxIter: TSpinEdit
+      Left = 19
+      Height = 28
+      Top = 282
+      Width = 90
+      MaxValue = 50000000
+      MinValue = 1000
+      OnChange = seMaxIterChange
+      TabOrder = 1
+      Value = 4000000
+    end
+    object chkBorder: TCheckBox
+      Left = 19
+      Height = 24
+      Top = 352
+      Width = 69
+      Caption = 'Border'
+      Checked = True
+      State = cbChecked
+      TabOrder = 2
+    end
+    object Label1: TLabel
+      Left = 17
+      Height = 20
+      Top = 142
+      Width = 82
+      Caption = 'Scale Factor:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 16
+      Height = 20
+      Top = 48
+      Width = 74
+      Caption = 'Back Color:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 20
+      Height = 20
+      Top = 259
+      Width = 65
+      Caption = 'Iterations:'
+      ParentColor = False
+    end
+  end
+  object BGRAGraphicControl1: TBGRAGraphicControl
+    Left = 1000
+    Height = 82
+    Top = 72
+    Width = 82
+    Color = clWhite
+    ColorOpacity = 128
+    Alignment = taCenter
+    Caption = 'BGRAGraphicControl1'
+  end
+end
