@@ -1,0 +1,124 @@
+object Form1: TForm1
+  Left = 374
+  Height = 746
+  Top = 197
+  Width = 993
+  Caption = 'Burning Ship Fractal TBGRABitmap Threaded'
+  ClientHeight = 746
+  ClientWidth = 993
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.2.4.0'
+  object PaintBox1: TPaintBox
+    Left = 150
+    Height = 746
+    Top = 0
+    Width = 843
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 746
+    Top = 0
+    Width = 150
+    Align = alLeft
+    ClientHeight = 746
+    ClientWidth = 150
+    TabOrder = 0
+    object FloatseCenterX: TFloatSpinEdit
+      Left = 32
+      Height = 28
+      Top = 104
+      Width = 68
+      Increment = 0.01
+      MaxValue = 5
+      MinValue = -1
+      TabOrder = 0
+    end
+    object FloatseCenterY: TFloatSpinEdit
+      Left = 32
+      Height = 28
+      Top = 196
+      Width = 69
+      Increment = 0.01
+      MaxValue = 5
+      TabOrder = 1
+    end
+    object seIterations: TSpinEdit
+      Left = 34
+      Height = 28
+      Top = 380
+      Width = 67
+      MaxValue = 255
+      MinValue = 1
+      OnChange = seIterationsChange
+      TabOrder = 2
+      Value = 255
+    end
+    object btnGenerate: TButton
+      Left = 16
+      Height = 48
+      Top = 472
+      Width = 111
+      Caption = 'Generate'
+      OnClick = btnGenerateClick
+      TabOrder = 3
+    end
+    object Label1: TLabel
+      Left = 31
+      Height = 20
+      Top = 74
+      Width = 55
+      Caption = 'CenterX:'
+      ParentColor = False
+    end
+    object Label2: TLabel
+      Left = 34
+      Height = 20
+      Top = 168
+      Width = 54
+      Caption = 'CenterY:'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      Left = 33
+      Height = 20
+      Top = 265
+      Width = 91
+      Caption = 'Zoom-Range:'
+      ParentColor = False
+    end
+    object Label4: TLabel
+      Left = 34
+      Height = 20
+      Top = 355
+      Width = 105
+      Caption = 'Color iterations:'
+      ParentColor = False
+    end
+    object seRange: TFloatSpinEdit
+      Left = 34
+      Height = 28
+      Top = 288
+      Width = 63
+      Increment = 0.01
+      MaxValue = 3
+      MinValue = 0.01
+      OnChange = seRangeChange
+      TabOrder = 4
+      Value = 2
+    end
+  end
+  object BGRAGraphicControl1: TBGRAGraphicControl
+    Left = 1072
+    Height = 99
+    Top = 48
+    Width = 103
+    Color = clWhite
+    ColorOpacity = 128
+    Alignment = taCenter
+    Caption = 'BGRAGraphicControl1'
+  end
+end
